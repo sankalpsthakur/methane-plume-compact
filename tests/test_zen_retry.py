@@ -41,7 +41,8 @@ def test_all():
     reset(); PLAN.extend([429, 429]); t = time.time()
     assert zen._range(url, 10, 19) == PAYLOAD[10:20]
     dt = time.time() - t
-    assert zen.STATS["http429"] == 2 and 2.0 <= dt < 9.0, (zen.STATS, dt)
+    # each cool-down sleeps the Retry-After (x U(1, 1.25)) plus U(0, 5) s of jitter (zen._wait_cooldown): two 429s take at most 2 x 6.25 s
+    assert zen.STATS["http429"] == 2 and 2.0 <= dt < 14.0, (zen.STATS, dt)
     # 2. permanent error fails at once (one request)
     reset(); PLAN.extend([404])
     try: zen._range(url, 0, 5); assert False
