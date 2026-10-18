@@ -61,7 +61,7 @@ The protocol is the paper-text one: strong and weak plumes are split by emission
   - It reports the paper-text variants as the headline and the official-code variants next to them.
   - On the released mag1c+RGB checkpoint it matches the official `run_validation` exactly on three metrics and within 4e-7 on AUPRC (`results/official_check.json`, TEST-LOG #4).
 
-The paper text, the public code and the released checkpoints disagree in six places: the tile rule, the strong/weak split, one swapped sentence, the learning rate, the use of the test set as validation in the public training code, and an incompatibility of `run_validation` with current torchmetrics. `results/CORRECTED-PROTOCOL.md` lists each one with the file and line at the pinned commit. The scorer reports both readings.
+The paper text, the public code and the released checkpoints disagree in six places: the tile rule, the strong/weak split, one swapped sentence, the learning rate, the use of the test set as validation in the public training code, and an incompatibility of `run_validation` with current torchmetrics. `results/CORRECTED-PROTOCOL.md` lists each one with the file and line at the pinned commit. The scorer reports both readings. These points, plus how `run_validation` computes AUPRC, were reported to the maintainers on 2026-10-18 as [spaceml-org/STARCOP#9](https://github.com/spaceml-org/STARCOP/issues/9).
 
 ## Verify the tooling (no data needed)
 

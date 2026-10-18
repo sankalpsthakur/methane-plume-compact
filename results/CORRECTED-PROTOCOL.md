@@ -5,10 +5,11 @@ Everything below was measured by `bench-gas-baseline` (private Kaggle kernel) on
 
 ## What does not match between the paper text, the public code and the released checkpoints
 Code locations are `file:line` in spaceml-org/STARCOP at commit c4789268a3fa0395f92357429052f6f5fc748acb (checked 2026-10-18).
+Reported to the maintainers on 2026-10-18 as https://github.com/spaceml-org/STARCOP/issues/9 (with one more point: `run_validation` builds its AUPRC from 16 fixed thresholds, `starcop/validation.py:38`, which gives 37.15 for the released mag1c+RGB model against 51.99 +- 2.76 published).
 1. Tile rule for the false-positive rate: the paper says a tile is positive above 10 active pixels; the public code uses `10*H*W/64^2` = 640 px at 512x512 (`starcop/models/model_module.py:211`). The published FPR (43.7) matches the 10-px rule (released run: 40.6), not the code (12.6).
 2. Strong/weak split: the paper and the Zenodo description split by emission rate (>= 1000 kg/h); `run_validation` splits by label pixel count (> 1000 px; `starcop/validation.py:159`). The two groupings move 40 of the 166 plume tiles between groups and 3 tiles disagree on plume vs no plume.
 3. One sentence of the paper's dataset section swaps strong and weak; the Metrics section is correct.
-4. Learning rate: paper text Adam 1e-3, released config 1e-4 (`starcop/config.yaml:43`; the checkpoint's optimizer state agrees with 1e-4).
+4. Learning rate: paper text Adam 1e-3, released config 1e-4 (`scripts/configs/config.yaml:43`, the config `scripts/train.py` loads; `starcop/config.yaml:43` and the `config.yaml` released with each model say the same; the checkpoint's optimizer state, 2.5e-5 after two halvings, agrees with 1e-4).
 5. Leakage: in the public training code the validation set is the test set (`starcop/data/datamodule.py:245`, `self.val_dataset = self.test_dataset`) and the ReduceLROnPlateau schedule monitors that loss (`starcop/models/model_module.py:178-185`; the checkpoint callback in `scripts/train.py:89-96` monitors it too). The released model is the last-epoch weights, so the leak is limited to the learning-rate schedule, but a corrected protocol must not do it.
 6. `run_validation` crashes on current torchmetrics (`ConfusionMatrix(num_classes=2)` without `task`, `starcop/validation.py:45` and `:67`) and does not create its output directory.
 
