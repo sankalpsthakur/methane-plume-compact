@@ -104,7 +104,9 @@ python scripts/score.py --pred-dir PRED_DIR --test-dir STARCOP_test --test-csv d
    The mag1c-only checkpoint is downloaded from the same Hugging Face repository by `kernels/baseline`.
 3. The train cache, built by `kernels/prep-cache` in rebuild mode, which reads the mirror and fetches the missing archive from Zenodo. In patch mode it can instead repair the output of `kernels/prep-train`. Run it first; it needs internet.
 
-In every `kernel-metadata.json`, point `id`, `dataset_sources` and `kernel_sources` at your copies, then push the kernels in this order:
+In every `kernel-metadata.json`, point `id`, `dataset_sources` and `kernel_sources` at your copies. The kernels find their inputs under `/kaggle/input` by marker files (`src/starcop_edge/kio.py`), so no other path needs changing. The generators `scripts/mk_gpu_wave.py` and `scripts/push_train.py` and the fetch helper `scripts/after_final.sh` also name the author's account (`sankalpsthakur`); change them as well if you regenerate kernels or fetch outputs.
+
+Push the kernels in this order:
 - **CPU run:** `prep-cache` → `dev` → `scripts/select_config.py` → `final` and `final-ref`.
 - **GPU run:** `gpu-probe` → `scripts/mk_gpu_wave.py plan` → `gpu-wide` → `scripts/select_config.py` → `gpu-compact`.
 
@@ -133,11 +135,13 @@ Training is not bit-reproducible across hardware.
 - **Fresh history.** The pre-registration and its amendments were committed in the author's private working repository before the runs they govern. The commit hashes cited in `protocol/` and `kernels/VERSIONS.md` (for example `93727d1` and `24267cc`) refer to that repository. This repository is a fresh export, so its git history does not prove that order.
 - **Not included:**
   - the two working notes `STATUS.md` and `SUBMISSION.md`, which are logs of a Kaggle account shared with other projects; their results are in this README and in `results/`;
-  - the Hugging Face model card, which is published separately.
+  - the Hugging Face model card, which is published separately;
+  - the program-level files the logs refer to: `PLAN.md` and `RESOURCES.md` (plan and ledgers of the whole program), `bin/guard.sh` (the local resource guard) and `../locks/` (the lock directories).
 - **Redactions:** names of unrelated kernels on the same Kaggle account are replaced by `[name redacted]` or `[names redacted]`, three times in `protocol/PREREGISTRATION.md` and twice in `kernels/VERSIONS.md`. Nothing else in those files differs.
 - **Edited before export** (the same change was made in the private repository on 2026-10-18):
   - six helper scripts (`scripts/after_final.sh`, `finish_wave.sh`, `run_wave.sh`, `slot.sh`, `watch_kernel.sh`, `push_train.py`) had the author's absolute paths replaced by relative defaults;
-  - `results/CORRECTED-PROTOCOL.md` gained `file:line` citations.
+  - `results/CORRECTED-PROTOCOL.md` gained `file:line` citations;
+  - `tests/test_zen_retry.py`: the upper time bound of one check rose from 9 s to 14 s, the most the code's cool-down jitter allows for two 429 responses. CI on Python 3.12 took 9.03 s. The retry code itself is unchanged.
 - **Terms used in the logs:**
   - *owner* is the author;
   - *lead* or *coordinator* is the coordinating session of the AI-assisted workflow below, and a *builder* is a session working on this track;
