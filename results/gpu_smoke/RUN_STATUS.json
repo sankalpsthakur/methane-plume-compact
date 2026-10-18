@@ -1,0 +1,48 @@
+{
+ "n_gpu": 0,
+ "parallel": 3,
+ "secs": 739,
+ "runs": {
+  "s_d5": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 80
+  },
+  "s_d2w": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 100
+  },
+  "s_d3": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 90
+  },
+  "s_d2": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 70
+  },
+  "s_d1": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 60
+  },
+  "s_final": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 60
+  },
+  "s_ctrl": {
+   "device": "cpu",
+   "rc": 0,
+   "secs": 300
+  },
+  "s_deadline": {
+   "device": "cpu",
+   "rc": -15,
+   "secs": 700,
+   "note": "terminated by the soft deadline"
+  }
+ }
+}

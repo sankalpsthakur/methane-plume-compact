@@ -1,0 +1,38 @@
+{
+ "f_d1_s0_fp32.onnx": {
+  "size_mb": 0.506,
+  "median_ms": 15.65,
+  "min_ms": 15.06,
+  "load1": 3.22,
+  "threads": 1,
+  "batch": 1,
+  "input": "1x4x512x512"
+ },
+ "f_d1_s0_int8.onnx": {
+  "size_mb": 0.175,
+  "median_ms": 18.24,
+  "min_ms": 17.79,
+  "load1": 3.36,
+  "threads": 1,
+  "batch": 1,
+  "input": "1x4x512x512"
+ },
+ "gf_d1_s0_fp32.onnx": {
+  "size_mb": 0.506,
+  "median_ms": 18.41,
+  "min_ms": 17.52,
+  "load1": 3.48,
+  "threads": 1,
+  "batch": 1,
+  "input": "1x4x512x512"
+ },
+ "gf_d1_s0_int8.onnx": {
+  "size_mb": 0.175,
+  "median_ms": 18.76,
+  "min_ms": 18.3,
+  "load1": 3.48,
+  "threads": 1,
+  "batch": 1,
+  "input": "1x4x512x512"
+ }
+}

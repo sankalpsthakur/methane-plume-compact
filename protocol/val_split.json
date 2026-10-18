@@ -1,0 +1,24 @@
+{
+ "purpose": "validation split carved from train.csv for model selection (never from test)",
+ "rule": "hold out whole acquisition dates (all flights of a date), choosing the two latest train dates, which are temporally adjacent to the test dates 2019-10-18/21/25 and share no flight line with train or test",
+ "val_dates": [
+  "2019-10-22",
+  "2019-10-23"
+ ],
+ "val": {
+  "none": 280,
+  "weak": 204,
+  "strong": 40,
+  "tiles": 524,
+  "flights": 46
+ },
+ "train_minus_val": {
+  "none": 1433,
+  "weak": 1235,
+  "strong": 233,
+  "tiles": 2901,
+  "flights": 210
+ },
+ "overlap_flights_val_vs_rest": [],
+ "frozen_before_any_training": true
+}

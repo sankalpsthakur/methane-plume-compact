@@ -1,0 +1,66 @@
+{
+ "parallel": 4,
+ "threads": 1,
+ "runs": [
+  {
+   "name": "d2",
+   "seed": 0,
+   "val_dates": "2019-10-22,2019-10-23",
+   "eval_every": 4000,
+   "steps": 8000,
+   "batch": 16,
+   "lr": 0.002,
+   "wd": 0.0,
+   "jitter": 32,
+   "widths": "8,16,32,64,128",
+   "stem_stride": 2,
+   "pos_weight": 1.0,
+   "hardneg": 0.0
+  },
+  {
+   "name": "d6",
+   "seed": 0,
+   "val_dates": "2019-10-22,2019-10-23",
+   "eval_every": 4000,
+   "steps": 8000,
+   "batch": 16,
+   "lr": 0.002,
+   "wd": 0.0,
+   "jitter": 32,
+   "widths": "8,16,32,64,128",
+   "stem_stride": 2,
+   "pos_weight": 1.0,
+   "hardneg": 0.5
+  },
+  {
+   "name": "d4",
+   "seed": 0,
+   "val_dates": "2019-10-22,2019-10-23",
+   "eval_every": 4000,
+   "steps": 8000,
+   "batch": 16,
+   "lr": 0.002,
+   "wd": 0.0,
+   "jitter": 32,
+   "widths": "8,16,32,64,128",
+   "stem_stride": 2,
+   "pos_weight": 0.5,
+   "hardneg": 0.0
+  },
+  {
+   "name": "d1",
+   "seed": 0,
+   "val_dates": "2019-10-22,2019-10-23",
+   "eval_every": 4000,
+   "steps": 8000,
+   "batch": 16,
+   "lr": 0.002,
+   "wd": 0.0,
+   "jitter": 32,
+   "widths": "4,8,16,32,64",
+   "stem_stride": 2,
+   "pos_weight": 1.0,
+   "hardneg": 0.0
+  }
+ ]
+}

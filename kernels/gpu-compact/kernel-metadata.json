@@ -1,0 +1,21 @@
+{
+ "id": "sankalpsthakur/bench-gas-gpu-compact",
+ "title": "bench-gas-gpu-compact",
+ "code_file": "script.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": "true",
+ "enable_gpu": "true",
+ "enable_tpu": "false",
+ "enable_internet": "true",
+ "machine_shape": "NvidiaTeslaT4",
+ "dataset_sources": [
+  "chrisphamda/starcop",
+  "sankalpsthakur/bench-gas-assets"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "sankalpsthakur/bench-gas-prep-cache"
+ ],
+ "model_sources": []
+}

@@ -1,0 +1,98 @@
+{
+ "mnv2_paper|bs32|amp1": {
+  "steps_per_s": 18.69,
+  "params": 6629233,
+  "peak_mem_gb": 0.84
+ },
+ "d2_8-128_s2|bs32|amp1": {
+  "steps_per_s": 67.89,
+  "params": 492197,
+  "peak_mem_gb": 0.17
+ },
+ "d1_4-64_s2|bs32|amp1": {
+  "steps_per_s": 80.45,
+  "params": 123649,
+  "peak_mem_gb": 0.09
+ },
+ "d3_16-256_s2|bs32|amp1": {
+  "steps_per_s": 49.99,
+  "params": 1964557,
+  "peak_mem_gb": 0.24
+ },
+ "d5_4-64_s1|bs32|amp1": {
+  "steps_per_s": 53.87,
+  "params": 123429,
+  "peak_mem_gb": 0.17
+ },
+ "d2w_8-128_s1|bs32|amp1": {
+  "steps_per_s": 37.68,
+  "params": 491945,
+  "peak_mem_gb": 0.29
+ },
+ "d3w_16-256_s1|bs32|amp1": {
+  "steps_per_s": 23.12,
+  "params": 1964241,
+  "peak_mem_gb": 0.59
+ },
+ "mnv2_paper|bs32|amp0": {
+  "steps_per_s": 11.12,
+  "params": 6629233,
+  "peak_mem_gb": 1.39
+ },
+ "d2_8-128_s2|bs32|amp0": {
+  "steps_per_s": 53.1,
+  "params": 492197,
+  "peak_mem_gb": 0.22
+ },
+ "d1_4-64_s2|bs32|amp0": {
+  "steps_per_s": 69.81,
+  "params": 123649,
+  "peak_mem_gb": 0.11
+ },
+ "d3_16-256_s2|bs32|amp0": {
+  "steps_per_s": 29.79,
+  "params": 1964557,
+  "peak_mem_gb": 0.33
+ },
+ "d5_4-64_s1|bs32|amp0": {
+  "steps_per_s": 33.59,
+  "params": 123429,
+  "peak_mem_gb": 0.27
+ },
+ "d2w_8-128_s1|bs32|amp0": {
+  "steps_per_s": 22.74,
+  "params": 491945,
+  "peak_mem_gb": 0.44
+ },
+ "d3w_16-256_s1|bs32|amp0": {
+  "steps_per_s": 12.68,
+  "params": 1964241,
+  "peak_mem_gb": 0.81
+ },
+ "env": {
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "arch_list": [
+   "sm_75",
+   "sm_80",
+   "sm_86",
+   "sm_90",
+   "sm_100",
+   "sm_120"
+  ],
+  "capability": [
+   7,
+   5
+  ],
+  "n_gpu": 2,
+  "cpus": 4,
+  "rasterio": "1.5.1",
+  "pandas": "2.3.3",
+  "numpy": "2.1.3",
+  "onnx": "1.22.0",
+  "onnxruntime": "MISSING ModuleNotFoundError(\"No module named 'onnxruntime'\")"
+ },
+ "device": "Tesla T4",
+ "torch": "2.11.0+cu128",
+ "secs": 44.2
+}

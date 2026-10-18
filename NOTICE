@@ -1,0 +1,42 @@
+methane-plume-compact
+Copyright 2026 Sankalp Thakur
+
+The code in this repository is licensed under the Apache License, Version 2.0 (LICENSE), except the
+STARCOP-derived files listed below.
+
+STARCOP-derived files: CC BY-NC 4.0, non-commercial use only
+  Source: "STARCOP dataset: Semantic Segmentation of Methane Plumes with Hyperspectral Machine Learning
+  Models", v1.0, by Vit Ruzicka, Gonzalo Mateo-Garcia, Luis Gomez-Chova, Anna Vaughan, Luis Guanter and
+  Andrew Markham. Zenodo, 2023, https://doi.org/10.5281/zenodo.7863343, licensed CC BY-NC 4.0
+  (https://creativecommons.org/licenses/by-nc/4.0/).
+  - data_meta/test.csv, data_meta/train.csv, data_meta/train_easy.csv: unmodified copies of the dataset's
+    CSV files (their MD5 equals the Zenodo record's).
+  - manifests/zenodo_STARCOP_*.tsv: lists of the files inside the dataset's Zenodo archives (name, size,
+    CRC32), read from the archives' central directories. manifests/mirror_files.tsv: the file list of a
+    Kaggle mirror of the dataset (chrisphamda/starcop).
+  - protocol/val_ids.csv and protocol/val_split.json: tile ids and acquisition dates of the validation
+    split, chosen from the dataset's metadata.
+  - results/prep_cache/has_plume_label_mismatch.csv and results/official_eval/results.csv: per-tile values
+    computed from the dataset's labels and metadata.
+  The Kaggle mirror is labelled "MIT"; that is not the dataset's licence. Get the data from the Zenodo record.
+
+Model weights
+  This repository contains no model weights. The weights trained with this code are published at
+  https://huggingface.co/sankalpsthakur/methane-plume-compact under CC BY-NC 4.0. The released STARCOP
+  checkpoints (https://huggingface.co/isp-uv-es/starcop, CC BY-NC 4.0) are not included; the kernels read
+  them from a Kaggle dataset at run time and use them only as scored references.
+
+STARCOP code (GPL-3.0)
+  No code of spaceml-org/STARCOP is included. src/starcop_edge/official_check.py downloads that repository
+  (GPL-3.0) at commit c4789268a3fa0395f92357429052f6f5fc748acb inside a Kaggle kernel at run time and calls
+  its run_validation, to cross-check this repository's scorer. src/starcop_edge/metrics.py implements the
+  metric definitions of the paper and of that code independently.
+
+Architecture replica
+  The class SMPLikeUnet in src/starcop_edge/models.py reproduces the layer layout and parameter names of the
+  Unet of segmentation_models_pytorch with a MobileNetV2 encoder, so that the released checkpoints load. The
+  notices and licences of those projects are in LICENSES/:
+  - segmentation_models_pytorch: MIT License, Copyright (c) 2019, Pavel Iakubovskii
+    (LICENSES/MIT-segmentation_models_pytorch.txt).
+  - torchvision (MobileNetV2): BSD 3-Clause License, Copyright (c) Soumith Chintala 2016, All rights reserved
+    (LICENSES/BSD-3-Clause-torchvision.txt).

@@ -1,0 +1,5 @@
+{
+ "batch32_batches_per_s": 67.4,
+ "sampler_init_s_per_tile": 0.0084,
+ "tiles": 286
+}

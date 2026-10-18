@@ -1,0 +1,7 @@
+{
+ "machine_shape": "NvidiaTeslaT4",
+ "max_gpus": 2,
+ "billing_b": 2,
+ "billed_cap_s": 1200,
+ "wall_cap_s": 600
+}

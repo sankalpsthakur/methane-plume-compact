@@ -1,0 +1,38 @@
+{
+ "params": 492197,
+ "pt_state_bytes": 2006947,
+ "onnx_fp32_bytes": 1978767,
+ "onnx_int8_bytes": 548935,
+ "bn_fold_maxabs": 2.2113323211669922e-05,
+ "onnx_fp32_vs_torch_maxabs": 3.0159950256347656e-05,
+ "onnx_fp32": {
+  "F1_strong_q": 76.963,
+  "F1_weak_q": NaN,
+  "F1_strong_px": 80.272,
+  "F1_weak_px": 54.959,
+  "FPR_tile_text10": 100.0,
+  "FPR_tile_official640": 50.0,
+  "AUPRC_ap": 93.463,
+  "AUPRC_trapz16": 87.596
+ },
+ "onnx_fp32_secs_per_tile_4thr": 0.08,
+ "onnx_fp32_latency_ms_1thread_kaggle(median,min)": [
+  82.4863015000119,
+  81.3508669998555
+ ],
+ "onnx_int8": {
+  "F1_strong_q": 78.021,
+  "F1_weak_q": NaN,
+  "F1_strong_px": 81.027,
+  "F1_weak_px": 57.389,
+  "FPR_tile_text10": 100.0,
+  "FPR_tile_official640": 50.0,
+  "AUPRC_ap": 93.749,
+  "AUPRC_trapz16": 93.525
+ },
+ "onnx_int8_secs_per_tile_4thr": 0.111,
+ "onnx_int8_latency_ms_1thread_kaggle(median,min)": [
+  99.44341249979516,
+  98.07767500024056
+ ]
+}

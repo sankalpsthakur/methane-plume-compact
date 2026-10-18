@@ -1,0 +1,14 @@
+# no data, weights or raw kernel outputs in git
+__pycache__/
+.pytest_cache/
+*.npy
+*.npz
+*.onnx
+*.pt
+*.pth
+*.ckpt
+data/
+assets/
+kernel_outputs/
+.DS_Store
+.benchmarks/

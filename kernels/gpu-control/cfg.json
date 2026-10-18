@@ -1,0 +1,32 @@
+{
+ "gpu": true,
+ "machine_shape": "NvidiaTeslaT4",
+ "max_gpus": 2,
+ "billing_b": 2,
+ "billed_cap_s": 5400,
+ "wall_cap_s": 2700,
+ "parallel": 1,
+ "threads": 2,
+ "deadline_s": 2100,
+ "runs": [
+  {
+   "name": "ctrl_mnv2",
+   "arch": "mnv2",
+   "sched": "plateau",
+   "plateau_every": 2221,
+   "seed": 0,
+   "steps": 22215,
+   "batch": 32,
+   "lr": 0.0001,
+   "wd": 0.0,
+   "jitter": 0,
+   "widths": "8,16,32,64,128",
+   "device": "cuda",
+   "amp": true,
+   "val_dates": "2019-10-22,2019-10-23",
+   "eval_every": 22215,
+   "test_eval": true,
+   "allow_test_with_val": true
+  }
+ ]
+}

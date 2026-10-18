@@ -1,0 +1,77 @@
+{
+  "parallel": 5,
+  "threads": 1,
+  "edge": true,
+  "runs": [
+    {
+      "name": "f_d1_s0",
+      "seed": 0,
+      "test_eval": true,
+      "steps": 8000,
+      "batch": 16,
+      "lr": 0.002,
+      "wd": 0.0,
+      "jitter": 32,
+      "widths": "4,8,16,32,64",
+      "stem_stride": 2,
+      "pos_weight": 1.0,
+      "hardneg": 0.0
+    },
+    {
+      "name": "f_d1_s1",
+      "seed": 1,
+      "test_eval": true,
+      "steps": 8000,
+      "batch": 16,
+      "lr": 0.002,
+      "wd": 0.0,
+      "jitter": 32,
+      "widths": "4,8,16,32,64",
+      "stem_stride": 2,
+      "pos_weight": 1.0,
+      "hardneg": 0.0
+    },
+    {
+      "name": "f_d1_s2",
+      "seed": 2,
+      "test_eval": true,
+      "steps": 8000,
+      "batch": 16,
+      "lr": 0.002,
+      "wd": 0.0,
+      "jitter": 32,
+      "widths": "4,8,16,32,64",
+      "stem_stride": 2,
+      "pos_weight": 1.0,
+      "hardneg": 0.0
+    },
+    {
+      "name": "f_d1_s3",
+      "seed": 3,
+      "test_eval": true,
+      "steps": 8000,
+      "batch": 16,
+      "lr": 0.002,
+      "wd": 0.0,
+      "jitter": 32,
+      "widths": "4,8,16,32,64",
+      "stem_stride": 2,
+      "pos_weight": 1.0,
+      "hardneg": 0.0
+    },
+    {
+      "name": "f_d1_s4",
+      "seed": 4,
+      "test_eval": true,
+      "steps": 8000,
+      "batch": 16,
+      "lr": 0.002,
+      "wd": 0.0,
+      "jitter": 32,
+      "widths": "4,8,16,32,64",
+      "stem_stride": 2,
+      "pos_weight": 1.0,
+      "hardneg": 0.0
+    }
+  ]
+}

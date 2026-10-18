@@ -1,0 +1,372 @@
+{
+ "mine": {
+  "F1_strong_px": 84.22803628147615,
+  "P_strong_px": 84.07112040789646,
+  "R_strong_px": 84.38553900662686,
+  "F1_weak_px": 39.02320479727822,
+  "P_weak_px": 26.05625772951733,
+  "R_weak_px": 77.68160661053292,
+  "F1_strong_q": 83.07908583629799,
+  "P_strong_q": 79.83470653081251,
+  "R_strong_q": 86.598330061655,
+  "F1_weak_q": 42.33949011112963,
+  "P_weak_q": 30.013265732613714,
+  "R_weak_q": 71.84618061597355,
+  "F1_all_plume": 69.18886555677678,
+  "P_all_plume": 59.29750441026101,
+  "R_all_plume": 83.04082831546482,
+  "F1_all_tiles": 45.10377894678365,
+  "P_all_tiles": 30.959835265727882,
+  "R_all_tiles": 83.04082831546482,
+  "n_tiles": 342.0,
+  "FPR_tile_official640": 12.571428571428571,
+  "TPR_tile_official640_all_plume": 34.73053892215569,
+  "TPR_tile_official640_strong_q": 64.91228070175438,
+  "TPR_tile_official640_weak_q": 19.09090909090909,
+  "FPR_tile_text10": 40.57142857142857,
+  "TPR_tile_text10_all_plume": 93.41317365269461,
+  "TPR_tile_text10_strong_q": 100.0,
+  "TPR_tile_text10_weak_q": 90.0,
+  "FPR_px_no_plume": 0.5327017647879464,
+  "AUPRC_trapz16": 37.14740066816399,
+  "AUPRC_ap": 50.59941272334931
+ },
+ "ci": {
+  "F1_strong_px": [
+   76.2,
+   88.79
+  ],
+  "P_strong_px": [
+   75.46,
+   88.64
+  ],
+  "R_strong_px": [
+   73.55,
+   91.05
+  ],
+  "F1_weak_px": [
+   24.19,
+   59.92
+  ],
+  "P_weak_px": [
+   14.46,
+   48.27
+  ],
+  "R_weak_px": [
+   72.72,
+   81.99
+  ],
+  "F1_strong_q": [
+   73.12,
+   88.22
+  ],
+  "P_strong_q": [
+   67.68,
+   86.29
+  ],
+  "R_strong_q": [
+   75.59,
+   92.6
+  ],
+  "F1_weak_q": [
+   24.57,
+   64.27
+  ],
+  "P_weak_q": [
+   14.83,
+   58.16
+  ],
+  "R_weak_q": [
+   67.54,
+   76.92
+  ],
+  "F1_all_plume": [
+   52.84,
+   80.59
+  ],
+  "P_all_plume": [
+   39.79,
+   76.01
+  ],
+  "R_all_plume": [
+   74.34,
+   88.78
+  ],
+  "F1_all_tiles": [
+   28.21,
+   65.12
+  ],
+  "P_all_tiles": [
+   17.21,
+   53.03
+  ],
+  "R_all_tiles": [
+   74.34,
+   88.78
+  ],
+  "n_tiles": [
+   342.0,
+   342.0
+  ],
+  "FPR_tile_official640": [
+   7.78,
+   17.44
+  ],
+  "TPR_tile_official640_all_plume": [
+   27.33,
+   42.2
+  ],
+  "TPR_tile_official640_strong_q": [
+   52.0,
+   77.42
+  ],
+  "TPR_tile_official640_weak_q": [
+   11.96,
+   26.72
+  ],
+  "FPR_tile_text10": [
+   32.95,
+   47.46
+  ],
+  "TPR_tile_text10_all_plume": [
+   89.47,
+   96.91
+  ],
+  "TPR_tile_text10_strong_q": [
+   100.0,
+   100.0
+  ],
+  "TPR_tile_text10_weak_q": [
+   84.21,
+   95.19
+  ],
+  "FPR_px_no_plume": [
+   0.15,
+   1.08
+  ],
+  "AUPRC_trapz16": [
+   20.91,
+   58.23
+  ],
+  "AUPRC_ap": [
+   25.52,
+   78.72
+  ]
+ },
+ "paper_table2": {
+  "F1_strong": [
+   81.96,
+   3.71
+  ],
+  "F1_weak": [
+   43.42,
+   5.72
+  ],
+  "FPR_tile": [
+   43.66,
+   7.36
+  ],
+  "AUPRC": [
+   51.99,
+   2.76
+  ]
+ },
+ "crosstab": {
+  "none": {
+   "none": 174,
+   "strong_px": 0,
+   "weak_px": 2
+  },
+  "strong_q": {
+   "none": 0,
+   "strong_px": 24,
+   "weak_px": 33
+  },
+  "weak_q": {
+   "none": 1,
+   "strong_px": 7,
+   "weak_px": 101
+  }
+ },
+ "n_tiles": 342,
+ "infer_s_per_tile_4threads": 0.416,
+ "mag1c_only": {
+  "params": 6628369,
+  "mine": {
+   "F1_strong_px": 66.74020724208609,
+   "P_strong_px": 72.9143017089897,
+   "R_strong_px": 61.530083327865626,
+   "F1_weak_px": 47.507393122721055,
+   "P_weak_px": 37.465847510075925,
+   "R_weak_px": 64.90246326028974,
+   "F1_strong_q": 66.74364052235045,
+   "P_strong_q": 70.79606232075034,
+   "R_strong_q": 63.13002847742541,
+   "F1_weak_q": 48.76103266652956,
+   "P_weak_q": 41.402560325583515,
+   "R_weak_q": 59.300504611101445,
+   "F1_all_plume": 61.52736742989212,
+   "P_all_plume": 60.862871482749235,
+   "R_all_plume": 62.20653336969977,
+   "F1_all_tiles": 46.54936238857991,
+   "P_all_tiles": 37.18901494484268,
+   "R_all_tiles": 62.20653336969977,
+   "n_tiles": 342.0,
+   "FPR_tile_official640": 9.142857142857142,
+   "TPR_tile_official640_all_plume": 28.143712574850298,
+   "TPR_tile_official640_strong_q": 54.3859649122807,
+   "TPR_tile_official640_weak_q": 14.545454545454545,
+   "FPR_tile_text10": 36.0,
+   "TPR_tile_text10_all_plume": 87.42514970059881,
+   "TPR_tile_text10_strong_q": 98.24561403508773,
+   "TPR_tile_text10_weak_q": 81.81818181818181,
+   "FPR_px_no_plume": 0.27039664132254465,
+   "AUPRC_trapz16": 39.00311539848627,
+   "AUPRC_ap": 40.91459950492793
+  },
+  "ci": {
+   "F1_strong_px": [
+    48.16,
+    78.33
+   ],
+   "P_strong_px": [
+    42.41,
+    94.4
+   ],
+   "R_strong_px": [
+    49.81,
+    69.69
+   ],
+   "F1_weak_px": [
+    32.0,
+    66.09
+   ],
+   "P_weak_px": [
+    21.42,
+    65.58
+   ],
+   "R_weak_px": [
+    59.6,
+    70.17
+   ],
+   "F1_strong_q": [
+    48.02,
+    78.55
+   ],
+   "P_strong_q": [
+    42.14,
+    92.4
+   ],
+   "R_strong_q": [
+    51.2,
+    71.51
+   ],
+   "F1_weak_q": [
+    30.86,
+    66.39
+   ],
+   "P_weak_q": [
+    21.02,
+    73.69
+   ],
+   "R_weak_q": [
+    53.1,
+    65.09
+   ],
+   "F1_all_plume": [
+    47.01,
+    73.17
+   ],
+   "P_all_plume": [
+    39.64,
+    84.31
+   ],
+   "R_all_plume": [
+    53.84,
+    68.95
+   ],
+   "F1_all_tiles": [
+    31.12,
+    62.07
+   ],
+   "P_all_tiles": [
+    21.45,
+    60.02
+   ],
+   "R_all_tiles": [
+    53.84,
+    68.95
+   ],
+   "n_tiles": [
+    342.0,
+    342.0
+   ],
+   "FPR_tile_official640": [
+    5.03,
+    13.53
+   ],
+   "TPR_tile_official640_all_plume": [
+    21.26,
+    34.81
+   ],
+   "TPR_tile_official640_strong_q": [
+    40.31,
+    67.31
+   ],
+   "TPR_tile_official640_weak_q": [
+    8.04,
+    21.65
+   ],
+   "FPR_tile_text10": [
+    28.81,
+    42.77
+   ],
+   "TPR_tile_text10_all_plume": [
+    82.35,
+    92.12
+   ],
+   "TPR_tile_text10_strong_q": [
+    94.03,
+    100.0
+   ],
+   "TPR_tile_text10_weak_q": [
+    74.55,
+    88.54
+   ],
+   "FPR_px_no_plume": [
+    0.07,
+    0.53
+   ],
+   "AUPRC_trapz16": [
+    22.39,
+    64.45
+   ],
+   "AUPRC_ap": [
+    23.47,
+    65.41
+   ]
+  },
+  "paper_table2": {
+   "F1_strong": [
+    74.15,
+    6.1
+   ],
+   "F1_weak": [
+    47.57,
+    4.17
+   ],
+   "FPR_tile": [
+    52.11,
+    10.98
+   ],
+   "AUPRC": [
+    49.41,
+    5.49
+   ]
+  }
+ },
+ "smp_vs_ours_max_abs_logit_diff_8tiles": 0.0,
+ "smp_version": "0.5.0",
+ "official_error": "OSError(\"Cannot save file into a non-existent directory: '/kaggle/working/official_eval'\")",
+ "secs": 645.5
+}

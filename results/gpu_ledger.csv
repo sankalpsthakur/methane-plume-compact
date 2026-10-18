@@ -1,0 +1,4 @@
+utc,stage,ref,used_before_h,used_after_h,account_delta_h,billed_h,source
+2026-10-17T19:57:01Z,gpu-probe,sankalpsthakur/bench-gas-gpu-probe,3.36,3.38,0.02,0.05,gpus x wall (2 x 92 s)
+2026-10-17T21:02:32Z,gpu-wide,sankalpsthakur/bench-gas-gpu-wide,3.70,4.66,0.96,1.35,gpus x wall (2 x 2427 s)
+2026-10-17T22:30:24Z,gpu-compact,sankalpsthakur/bench-gas-gpu-compact,4.66,5.90,1.24,2.49,gpus x wall (2 x 4476 s)

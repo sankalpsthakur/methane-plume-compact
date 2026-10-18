@@ -1,0 +1,50 @@
+[{"stream_name":"stdout","time":10.0346312,"data":"[   0.4s] Sat Oct 17 19:54:20 2026       \n"}
+,{"stream_name":"stdout","time":10.034677703,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":10.034682254,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":10.034684893,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":10.034687423,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":10.034689818,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":10.034692255,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":10.034694686,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":10.034697194,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":10.034699592,"data":"| N/A   46C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":10.034702027,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":10.03470462,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":10.034707136,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":10.034709547,"data":"| N/A   44C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":10.03471201,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":10.0347144,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":10.034716912,"data":"\n"}
+,{"stream_name":"stdout","time":10.034719184,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":10.034721735,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":10.034724134,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":10.034726639,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":10.034729091,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":10.034731533,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":10.034735063,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":10.034737598,"data":"CPU(s):                                  4\n"}
+,{"stream_name":"stdout","time":10.03474007,"data":"Model name:                              Intel(R) Xeon(R) CPU @ 2.00GHz\n"}
+,{"stream_name":"stdout","time":10.034742529,"data":"\n"}
+,{"stream_name":"stdout","time":13.061402515,"data":"[   3.5s] env {\"torch\": \"2.11.0+cu128\", \"cuda\": \"12.8\", \"arch_list\": [\"sm_75\", \"sm_80\", \"sm_86\", \"sm_90\", \"sm_100\", \"sm_120\"], \"capability\": [7, 5], \"n_gpu\": 2, \"cpus\": 4, \"rasterio\": \"1.5.1\", \"pandas\": \"2.3.3\", \"numpy\": \"2.1.3\", \"onnx\": \"1.22.0\", \"onnxruntime\": \"MISSING ModuleNotFoundError(\\\"No module named 'onnxruntime'\\\")\"}\n"}
+,{"stream_name":"stdout","time":31.034620706,"data":"[  21.4s] mnv2_paper bs 32 amp True {\"steps_per_s\": 18.69, \"params\": 6629233, \"peak_mem_gb\": 0.84}\n"}
+,{"stream_name":"stdout","time":32.043663389,"data":"[  22.4s] d2_8-128_s2 bs 32 amp True {\"steps_per_s\": 67.89, \"params\": 492197, \"peak_mem_gb\": 0.17}\n"}
+,{"stream_name":"stdout","time":32.785968724,"data":"[  23.2s] d1_4-64_s2 bs 32 amp True {\"steps_per_s\": 80.45, \"params\": 123649, \"peak_mem_gb\": 0.09}\n"}
+,{"stream_name":"stdout","time":33.874595227,"data":"[  24.3s] d3_16-256_s2 bs 32 amp True {\"steps_per_s\": 49.99, \"params\": 1964557, \"peak_mem_gb\": 0.24}\n"}
+,{"stream_name":"stdout","time":34.867284738,"data":"[  25.3s] d5_4-64_s1 bs 32 amp True {\"steps_per_s\": 53.87, \"params\": 123429, \"peak_mem_gb\": 0.17}\n"}
+,{"stream_name":"stdout","time":36.190089551,"data":"[  26.6s] d2w_8-128_s1 bs 32 amp True {\"steps_per_s\": 37.68, \"params\": 491945, \"peak_mem_gb\": 0.29}\n"}
+,{"stream_name":"stdout","time":38.33417541,"data":"[  28.7s] d3w_16-256_s1 bs 32 amp True {\"steps_per_s\": 23.12, \"params\": 1964241, \"peak_mem_gb\": 0.59}\n"}
+,{"stream_name":"stdout","time":42.881258429,"data":"[  33.3s] mnv2_paper bs 32 amp False {\"steps_per_s\": 11.12, \"params\": 6629233, \"peak_mem_gb\": 1.39}\n"}
+,{"stream_name":"stdout","time":43.925585942,"data":"[  34.3s] d2_8-128_s2 bs 32 amp False {\"steps_per_s\": 53.1, \"params\": 492197, \"peak_mem_gb\": 0.22}\n"}
+,{"stream_name":"stdout","time":44.678770289,"data":"[  35.1s] d1_4-64_s2 bs 32 amp False {\"steps_per_s\": 69.81, \"params\": 123649, \"peak_mem_gb\": 0.11}\n"}
+,{"stream_name":"stdout","time":46.325780891,"data":"[  36.7s] d3_16-256_s2 bs 32 amp False {\"steps_per_s\": 29.79, \"params\": 1964557, \"peak_mem_gb\": 0.33}\n"}
+,{"stream_name":"stdout","time":47.829143022,"data":"[  38.2s] d5_4-64_s1 bs 32 amp False {\"steps_per_s\": 33.59, \"params\": 123429, \"peak_mem_gb\": 0.27}\n"}
+,{"stream_name":"stdout","time":49.959749766,"data":"[  40.4s] d2w_8-128_s1 bs 32 amp False {\"steps_per_s\": 22.74, \"params\": 491945, \"peak_mem_gb\": 0.44}\n"}
+,{"stream_name":"stdout","time":53.780055716,"data":"[  44.2s] d3w_16-256_s1 bs 32 amp False {\"steps_per_s\": 12.68, \"params\": 1964241, \"peak_mem_gb\": 0.81}\n"}
+,{"stream_name":"stdout","time":53.802793079,"data":"[  44.2s] DONE Tesla T4\n"}
+,{"stream_name":"stderr","time":60.141093025,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":60.141118708,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":60.414110276,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":60.41413614,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":61.247644647,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":62.296433027,"data":"[NbConvertApp] Writing 323264 bytes to __results__.html\n"}
+]

@@ -1,0 +1,24 @@
+{
+ "official": {
+  "F1_strong_px": 84.22803628147615,
+  "F1_weak_px": 39.02320479727822,
+  "FPR_tile_official640": 12.571428571428571,
+  "AUPRC_trapz16": 37.1474010207134,
+  "F1_all_tiles": 45.103779435157776,
+  "FPR_px_no_plume": 0.5327017647879464
+ },
+ "ours": {
+  "F1_strong_px": 84.228,
+  "F1_weak_px": 39.0232,
+  "FPR_tile_official640": 12.5714,
+  "AUPRC_trapz16": 37.1474
+ },
+ "secs": 251.7,
+ "commit": "c4789268a3fa0395f92357429052f6f5fc748acb",
+ "abs_diff": {
+  "F1_strong_px": 3.6281476155863857e-05,
+  "F1_weak_px": 4.797278215562528e-06,
+  "FPR_tile_official640": 2.8571428570600688e-05,
+  "AUPRC_trapz16": 1.0207134053530353e-06
+ }
+}

@@ -1,0 +1,37 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pytest
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Python tests (no data needed)
+        run: python -m pytest -q -p no:cacheprovider tests
+      - name: Soft-deadline test of the GPU driver
+        run: python tests/test_driver_deadline.py
+      - name: Shell tests of the GPU gate, launcher and timing gate
+        run: |
+          bash tests/test_gpu_gate.sh
+          bash tests/test_gpu_launch.sh
+          bash tests/test_g2_gate.sh
+      - name: MANIFEST.txt matches the files
+        run: sha256sum --check --quiet MANIFEST.txt

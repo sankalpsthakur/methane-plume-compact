@@ -1,0 +1,22 @@
+{
+ "n_gpu": 2,
+ "parallel": 2,
+ "secs": 2392,
+ "runs": {
+  "g_d2": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=1]",
+   "rc": 0,
+   "secs": 1340
+  },
+  "g_d3": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=0]",
+   "rc": 0,
+   "secs": 1570
+  },
+  "g_d1": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=1]",
+   "rc": 0,
+   "secs": 1010
+  }
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "model": {
+  "FRAC": 0.8,
+  "EFF": 0.8,
+  "RHO": 1.15,
+  "K": 300,
+  "P": 2,
+  "EVAL_S": 75,
+  "TEST_S": 80,
+  "INIT_S": 40,
+  "EDGE_S": 300,
+  "PLATEAU_S": 60
+ },
+ "billing_b": 2,
+ "n_gpu": 2,
+ "caps_billed_s": {
+  "probe": 1200,
+  "wide": 7800,
+  "compact": 10800,
+  "control": 5400
+ },
+ "caps_wall_s": {
+  "probe": 600,
+  "wide": 3900,
+  "compact": 5400,
+  "control": 2700
+ },
+ "sampler_batches_per_s": 61.9,
+ "machine_shape": "NvidiaTeslaT4",
+ "rates_steps_per_s": {
+  "d1": 49.52,
+  "d2": 49.52,
+  "d3": 39.99,
+  "d5": 43.1,
+  "d2w": 30.14,
+  "mnv2": 14.95
+ },
+ "wave": {
+  "epochs": 10,
+  "steps": 52450,
+  "cands": [
+   "d1",
+   "d2",
+   "d3"
+  ],
+  "projected_wide_wall_s": 2966,
+  "projected_wide_billed_s": 5932,
+  "projected_compact_worst_wall_s": 5820,
+  "projected_compact_worst_billed_s": 11640,
+  "projected_compact_wall_s": {
+   "d1": 5240,
+   "d2": 5240,
+   "d3": 5820
+  },
+  "soft_deadline_wall_s": {
+   "wide": 3300,
+   "compact": 6900
+  }
+ },
+ "merged": {
+  "control_epochs": 5,
+  "control_steps": 22215,
+  "plateau_every": 2221,
+  "billed_cap_s": 16200,
+  "wall_cap_s": 8100,
+  "soft_deadline_wall_s": 6900,
+  "per_candidate": {
+   "d1": {
+    "seed_job_s": 1338,
+    "control_job_s": 1964,
+    "wall_s": 5240,
+    "billed_s": 10479
+   },
+   "d2": {
+    "seed_job_s": 1338,
+    "control_job_s": 1964,
+    "wall_s": 5240,
+    "billed_s": 10479
+   },
+   "d3": {
+    "seed_job_s": 1628,
+    "control_job_s": 1964,
+    "wall_s": 5820,
+    "billed_s": 11640
+   }
+  }
+ },
+ "control": {
+  "epochs": 5,
+  "steps": 22215,
+  "plateau_every": 2221,
+  "merged_into": "compact",
+  "soft_deadline_wall_s": 6900
+ },
+ "sum_caps_billed_h": 7.0,
+ "gas_cap_billed_h": 8.0,
+ "merge_control_into_g2": true,
+ "projected_total_billed_h": 4.88,
+ "verdict": "OK",
+ "probe_device": "Tesla T4",
+ "probe_torch": "2.11.0+cu128"
+}

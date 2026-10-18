@@ -1,0 +1,37 @@
+{
+ "n_gpu": 2,
+ "parallel": 2,
+ "secs": 4247,
+ "runs": {
+  "gf_d1_s0": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=0]",
+   "rc": 0,
+   "secs": 1310
+  },
+  "gf_d1_s1": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=1]",
+   "rc": 0,
+   "secs": 1310
+  },
+  "gf_d1_s2": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=0]",
+   "rc": 0,
+   "secs": 1300
+  },
+  "gf_d1_s3": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=1]",
+   "rc": 0,
+   "secs": 1310
+  },
+  "gf_d1_s4": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=0]",
+   "rc": 0,
+   "secs": 1210
+  },
+  "ctrl_mnv2": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=1]",
+   "rc": 0,
+   "secs": 1590
+  }
+ }
+}

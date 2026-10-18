@@ -1,0 +1,58 @@
+[{"stream_name":"stdout","time":0.842697602,"data":"train cache dir: /kaggle/input/bench-gas-prep-cache/cache | mirror: None | assets: None \n"}
+,{"stream_name":"stdout","time":0.842736246,"data":"CFG: {\"gpu\": true, \"machine_shape\": \"NvidiaTeslaT4\", \"max_gpus\": 2, \"billing_b\": 2, \"billed_cap_s\": 7800, \"wall_cap_s\": 3900, \"parallel\": 2, \"threads\": 2, \"deadline_s\": 3300, \"runs\": [{\"name\": \"g_d3\", \"seed\": 0, \"val_dates\": \"2019-10-22,2019-10-23\", \"eval_every\": 52450, \"steps\": 52450, \"batch\": 32, \"lr\": 0.002, \"wd\": 0.0, \"jitter\": 32, \"device\": \"cuda\", \"amp\": true, \"widths\": \"16,32,64,128,256\", \"stem_stride\": 2, \"pos_weight\": 1.0, \"hardneg\": 0.0}, {\"name\": \"g_d2\", \"seed\": 0, \"val_dates\": \"2019-10-22,2019-10-23\", \"eval_every\": 52450, \"steps\": 52450, \"batch\": 32, \"lr\": 0.002, \"wd\": 0.0, \"jitter\": 32, \"device\": \"cuda\", \"amp\": true, \"widths\": \"8,16,32,64,128\", \"stem_stride\": 2, \"pos_weight\": 1.0, \"hardneg\": 0.0}, {\"name\": \"g_d1\", \"seed\": 0, \"val_dates\": \"2019-10-22,2019-10-23\", \"eval_every\": 52450, \"steps\": 52450, \"batch\": 32, \"lr\": 0.002, \"wd\": 0.0, \"jitter\": 32, \"device\": \"cuda\", \"amp\": true, \"widths\": \"4,8,16,32,64\", \"stem_stride\": 2, \"pos_weight\": 1.0, \"hardneg\": 0.0}]}\n"}
+,{"stream_name":"stdout","time":0.892417682,"data":"CPU(s):                                  4\n"}
+,{"stream_name":"stdout","time":0.892439015,"data":"Model name:                              Intel(R) Xeon(R) CPU @ 2.00GHz\n"}
+,{"stream_name":"stdout","time":0.892443289,"data":"               total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":0.892447217,"data":"Mem:              31           0          25           0           4          30\n"}
+,{"stream_name":"stdout","time":0.892450969,"data":"\n"}
+,{"stream_name":"stdout","time":1.032972026,"data":"n_gpu: 2 \n"}
+,{"stream_name":"stdout","time":1.032998405,"data":"Sat Oct 17 20:22:00 2026       \n"}
+,{"stream_name":"stdout","time":1.033003492,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.033007828,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":1.033011682,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.033019613,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":1.0330234680000001,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":1.033027428,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":1.033031408,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":1.033036049,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":1.033040125,"data":"| N/A   45C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":1.03304429,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":1.033047868,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.033051919,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":1.033067739,"data":"| N/A   46C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":1.033072246,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":1.033075728,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.033079243,"data":"\n"}
+,{"stream_name":"stdout","time":1.03308246,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.033086472,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":1.033090061,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":1.033093634,"data":"4\n"}
+,{"stream_name":"stdout","time":1.033096996,"data":"\n"}
+,{"stream_name":"stdout","time":42.577816278,"data":"page cache warmed in 42 s\n"}
+,{"stream_name":"stdout","time":42.578578179,"data":"[    42s] started g_d3 (pid 31, slot 0, device cuda[CUDA_VISIBLE_DEVICES=0])\n"}
+,{"stream_name":"stdout","time":42.579282954,"data":"[    42s] started g_d2 (pid 32, slot 1, device cuda[CUDA_VISIBLE_DEVICES=1])\n"}
+,{"stream_name":"stdout","time":302.58823082,"data":"[   302s] g_d3: {\"event\": \"train\", \"step\": 7600, \"loss\": 0.01659, \"lr\": 0.001905, \"t\": 221.3}\n"}
+,{"stream_name":"stdout","time":302.588310927,"data":"[   302s] g_d2: {\"event\": \"train\", \"step\": 9000, \"loss\": 0.01498, \"lr\": 0.001866, \"t\": 221.3}\n"}
+,{"stream_name":"stdout","time":602.598120325,"data":"[   602s] g_d3: {\"event\": \"train\", \"step\": 18000, \"loss\": 0.0138, \"lr\": 0.00149, \"t\": 522.2}\n"}
+,{"stream_name":"stdout","time":602.598318182,"data":"[   602s] g_d2: {\"event\": \"train\", \"step\": 21400, \"loss\": 0.01323, \"lr\": 0.001306, \"t\": 523.3}\n"}
+,{"stream_name":"stdout","time":902.60617591,"data":"[   902s] g_d3: {\"event\": \"train\", \"step\": 28400, \"loss\": 0.01281, \"lr\": 0.000898, \"t\": 823.3}\n"}
+,{"stream_name":"stdout","time":902.607292514,"data":"[   902s] g_d2: {\"event\": \"train\", \"step\": 33800, \"loss\": 0.01302, \"lr\": 0.000594, \"t\": 825.6}\n"}
+,{"stream_name":"stdout","time":1202.626412257,"data":"[  1202s] g_d3: {\"event\": \"train\", \"step\": 38800, \"loss\": 0.01082, \"lr\": 0.000352, \"t\": 1125.0}\n"}
+,{"stream_name":"stdout","time":1202.626798094,"data":"[  1202s] g_d2: {\"event\": \"train\", \"step\": 46000, \"loss\": 0.01189, \"lr\": 0.000113, \"t\": 1124.4}\n"}
+,{"stream_name":"stdout","time":1382.631411099,"data":"[  1382s] finished g_d2 rc=0 in 1340s :: {\"event\": \"train\", \"step\": 52400, \"loss\": 0.01225, \"lr\": 4e-05, \"t\": 1281.3} | {\"event\": \"val\", \"step\": 52450, \"F1_strong_q\": 72.628, \"F1_weak_q\": 73.368, \"F1_strong_px\": 75.471, \"F1_weak_px\": 57.637, \"FPR_tile_text10\": 62.633, \"FPR_tile_official640\": 10.676, \"AUPRC_ap\": 65.614, \"AUPRC_trapz16\": 65.247, \"t\": 1294.6} | {\"event\": \"done\", \"secs\": 1294.6, \"t\": 1294.6}\n"}
+,{"stream_name":"stdout","time":1382.632569047,"data":"[  1382s] started g_d1 (pid 59, slot 1, device cuda[CUDA_VISIBLE_DEVICES=1])\n"}
+,{"stream_name":"stdout","time":1502.635938964,"data":"[  1502s] g_d3: {\"event\": \"train\", \"step\": 49200, \"loss\": 0.01126, \"lr\": 5.9e-05, \"t\": 1424.6}\n"}
+,{"stream_name":"stdout","time":1502.63636895,"data":"[  1502s] g_d1: {\"event\": \"train\", \"step\": 4000, \"loss\": 0.01692, \"lr\": 0.001975, \"t\": 94.1}\n"}
+,{"stream_name":"stdout","time":1612.639757237,"data":"[  1612s] finished g_d3 rc=0 in 1570s :: {\"event\": \"train\", \"step\": 52400, \"loss\": 0.0113, \"lr\": 4e-05, \"t\": 1518.2} | {\"event\": \"val\", \"step\": 52450, \"F1_strong_q\": 65.388, \"F1_weak_q\": 73.877, \"F1_strong_px\": 73.525, \"F1_weak_px\": 59.074, \"FPR_tile_text10\": 56.228, \"FPR_tile_official640\": 10.32, \"AUPRC_ap\": 61.433, \"AUPRC_trapz16\": 60.508, \"t\": 1531.4} | {\"event\": \"done\", \"secs\": 1531.4, \"t\": 1531.4}\n"}
+,{"stream_name":"stdout","time":1802.643481774,"data":"[  1802s] g_d1: {\"event\": \"train\", \"step\": 19600, \"loss\": 0.01499, \"lr\": 0.001406, \"t\": 396.6}\n"}
+,{"stream_name":"stdout","time":2102.648158358,"data":"[  2102s] g_d1: {\"event\": \"train\", \"step\": 36600, \"loss\": 0.01314, \"lr\": 0.000452, \"t\": 696.2}\n"}
+,{"stream_name":"stdout","time":2392.653410733,"data":"[  2392s] finished g_d1 rc=0 in 1010s :: {\"event\": \"train\", \"step\": 52400, \"loss\": 0.01283, \"lr\": 4e-05, \"t\": 976.0} | {\"event\": \"val\", \"step\": 52450, \"F1_strong_q\": 68.776, \"F1_weak_q\": 78.064, \"F1_strong_px\": 78.0, \"F1_weak_px\": 58.425, \"FPR_tile_text10\": 59.786, \"FPR_tile_official640\": 11.032, \"AUPRC_ap\": 68.645, \"AUPRC_trapz16\": 67.99, \"t\": 985.4} | {\"event\": \"done\", \"secs\": 985.4, \"t\": 985.4}\n"}
+,{"stream_name":"stdout","time":2392.653709665,"data":"ALL RUNS DONE 2392 s\n"}
+,{"stream_name":"stdout","time":2392.653976238,"data":"KERNEL DONE 2392 s\n"}
+,{"stream_name":"stderr","time":2394.959918883,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2394.959950307,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2395.287167939,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2395.287207902,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2396.155123194,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2397.273345056,"data":"[NbConvertApp] Writing 355993 bytes to __results__.html\n"}
+]

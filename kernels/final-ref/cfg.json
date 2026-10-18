@@ -1,0 +1,12 @@
+{
+  "parallel": 1,
+  "threads": 2,
+  "need_test": true,
+  "official_check": {
+    "F1_strong_px": 84.228,
+    "F1_weak_px": 39.0232,
+    "FPR_tile_official640": 12.5714,
+    "AUPRC_trapz16": 37.1474
+  },
+  "runs": []
+}
