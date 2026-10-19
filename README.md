@@ -42,6 +42,7 @@ The protocol is the paper-text one: strong and weak plumes are split by emission
 - **Comparator noise:** the released mag1c-only comparator is a single run. The tile bootstrap does not capture its seed noise.
 - **Control:** the control row carries no claim. Trained with this pipeline at this budget, the released architecture reaches the same weak F1 as the small model (54.42 against 54.47). That suggests the gain over the released runs comes from the training pipeline rather than from the small architecture, but it rests on one control run.
 - **Two runs:** the same architecture was evaluated on the same test split twice. The GPU run was planned, with the same target and rule, before the CPU run's test evaluation, and it changed only the training budget.
+- **No third look:** a third, validation-gated wave (Amendment 6, 15 epochs) failed its gate: its validation composite was 2.0 points below the 10-epoch run, where the gate needed +2.0. The test split was not read a third time (`results/gpu_runs/gpu-gate3/gate_decision.json`).
 
 ## Protocol
 

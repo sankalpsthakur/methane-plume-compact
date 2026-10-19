@@ -1,0 +1,12 @@
+{
+ "n_gpu": 2,
+ "parallel": 1,
+ "secs": 1585,
+ "runs": {
+  "c_d1_e15_val": {
+   "device": "cuda[CUDA_VISIBLE_DEVICES=0]",
+   "rc": 0,
+   "secs": 1420
+  }
+ }
+}

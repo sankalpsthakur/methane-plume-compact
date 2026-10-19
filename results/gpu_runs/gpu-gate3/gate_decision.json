@@ -1,0 +1,26 @@
+{
+ "verdict": "FAIL",
+ "C_gate": 61.918,
+ "C_g1": 63.925,
+ "dC": -2.007,
+ "tol": 2.0,
+ "deltas_val": {
+  "F1_weak_q": 0.405,
+  "F1_strong_q": -2.094,
+  "FPR_tile_text10": 4.982,
+  "AUPRC_ap": -1.355
+ },
+ "gate_val": {
+  "F1_weak_q": 78.469,
+  "F1_strong_q": 66.681,
+  "FPR_tile_text10": 64.769,
+  "AUPRC_ap": 67.291
+ },
+ "g1_val": {
+  "F1_weak_q": 78.064,
+  "F1_strong_q": 68.776,
+  "FPR_tile_text10": 59.786,
+  "AUPRC_ap": 68.645
+ },
+ "rc": 0
+}

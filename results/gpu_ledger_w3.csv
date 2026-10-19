@@ -1,0 +1,2 @@
+utc,stage,ref,used_before_h,used_after_h,account_delta_h,billed_h,source
+2026-10-19T17:17:10Z,gpu-gate3,sankalpsthakur/bench-gas-gpu-gate3,15.95,16.76,0.81,0.90,gpus x wall (2 x 1619 s)

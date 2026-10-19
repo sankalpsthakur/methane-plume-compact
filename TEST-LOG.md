@@ -51,3 +51,15 @@ Same rules as above. `<cfg>` is the config frozen in Amendment 4b (chosen by the
 | 37 | about 21:08-22:23 UTC (kernel window) | bench-gas-gpu-compact v1 (control job) | ctrl_mnv2 PyTorch fp32, last-step weights (paper-recipe-like control, plateau on the validation dates) | control row for reading the compact results | OK. F1 strong/weak (rate) 71.83/54.42, FPR(>10 px) 46.29, AUPRC 56.18 |
 
 Amendment 4b (2026-10-17 21:0x UTC, before the G2 push): `<cfg>` = **d1**, E = 10 (52,450 steps), seeds 0-4; the control (row #37) runs as the last job inside `bench-gas-gpu-compact` (Amendment 5 note 1), 5 control epochs = 22,215 steps, so row #37's kernel is `bench-gas-gpu-compact`, not `bench-gas-gpu-control`. Rows #22-#37 are otherwise as announced above.
+
+## Wave 3 on Colab (Amendment 6): rows #38-#42, announced on 2026-10-19 before any Colab training run
+
+Rows #38-#42 exist only if the validation gate of Amendment 6 passes and Amendment 6a is committed; until then no test file is fetched. **Outcome (Amendment 6a): the gate failed, so none of these rows ran.** One row per seed (d1, E = 15, seeds 0-4, PyTorch fp32, last-step weights), each scored once.
+
+| # | time | session / job | model / config | purpose | outcome |
+|---|---|---|---|---|---|
+| 38 | not run | (bench-gas-gpu-test3, never generated) | c_d1_e15_s0 | final test evaluation (one per seed) | NOT RUN: the validation gate failed (Amendment 6a, dC = -2.007); no test file was read |
+| 39 | not run | (bench-gas-gpu-test3, never generated) | c_d1_e15_s1 | final test evaluation (one per seed) | NOT RUN: the validation gate failed (Amendment 6a, dC = -2.007); no test file was read |
+| 40 | not run | (bench-gas-gpu-test3, never generated) | c_d1_e15_s2 | final test evaluation (one per seed) | NOT RUN: the validation gate failed (Amendment 6a, dC = -2.007); no test file was read |
+| 41 | not run | (bench-gas-gpu-test3, never generated) | c_d1_e15_s3 | final test evaluation (one per seed) | NOT RUN: the validation gate failed (Amendment 6a, dC = -2.007); no test file was read |
+| 42 | not run | (bench-gas-gpu-test3, never generated) | c_d1_e15_s4 | final test evaluation (one per seed) | NOT RUN: the validation gate failed (Amendment 6a, dC = -2.007); no test file was read |

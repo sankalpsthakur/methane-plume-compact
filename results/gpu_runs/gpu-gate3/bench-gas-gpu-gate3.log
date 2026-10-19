@@ -1,0 +1,47 @@
+[{"stream_name":"stdout","time":0.628347816,"data":"train cache dir: /kaggle/input/bench-gas-prep-cache/cache | mirror: None | assets: None \n"}
+,{"stream_name":"stdout","time":0.628379974,"data":"CFG: {\"gpu\": true, \"machine_shape\": \"NvidiaTeslaT4\", \"max_gpus\": 2, \"billing_b\": 2, \"threads\": 2, \"billed_cap_s\": 6000, \"wall_cap_s\": 3000, \"parallel\": 1, \"deadline_s\": 2700, \"runs\": [{\"name\": \"c_d1_e15_val\", \"seed\": 0, \"val_dates\": \"2019-10-22,2019-10-23\", \"eval_every\": 78675, \"steps\": 78675, \"batch\": 32, \"lr\": 0.002, \"wd\": 0.0, \"jitter\": 32, \"device\": \"cuda\", \"amp\": true, \"widths\": \"4,8,16,32,64\", \"stem_stride\": 2, \"pos_weight\": 1.0, \"hardneg\": 0.0}]}\n"}
+,{"stream_name":"stdout","time":0.681077499,"data":"CPU(s):                                  4\n"}
+,{"stream_name":"stdout","time":0.681100682,"data":"Model name:                              Intel(R) Xeon(R) CPU @ 2.00GHz\n"}
+,{"stream_name":"stdout","time":0.681105714,"data":"               total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":0.681110057,"data":"Mem:              31           0          25           0           4          30\n"}
+,{"stream_name":"stdout","time":0.681114084,"data":"\n"}
+,{"stream_name":"stdout","time":0.916996122,"data":"n_gpu: 2 \n"}
+,{"stream_name":"stdout","time":0.917019117,"data":"Mon Oct 19 16:45:06 2026       \n"}
+,{"stream_name":"stdout","time":0.917023366,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":0.917032505,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":0.917035382,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":0.917037712,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":0.917040087,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":0.917042357,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":0.917045142,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":0.917061217,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":0.917065654,"data":"| N/A   37C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":0.917069845,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":0.91707434,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":0.917078546,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":0.917082047,"data":"| N/A   36C    P8             11W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":0.91708541,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":0.91708917,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":0.917092607,"data":"\n"}
+,{"stream_name":"stdout","time":0.917095694,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":0.917108064,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":0.91711266,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":0.917116093,"data":"4\n"}
+,{"stream_name":"stdout","time":0.917119227,"data":"\n"}
+,{"stream_name":"stdout","time":166.044778312,"data":"page cache warmed in 165 s\n"}
+,{"stream_name":"stdout","time":166.045822245,"data":"[   165s] started c_d1_e15_val (pid 32, slot 0, device cuda[CUDA_VISIBLE_DEVICES=0])\n"}
+,{"stream_name":"stdout","time":306.048563843,"data":"[   305s] c_d1_e15_val: {\"event\": \"train\", \"step\": 6200, \"loss\": 0.01651, \"lr\": 0.001972, \"t\": 109.9}\n"}
+,{"stream_name":"stdout","time":606.053367399,"data":"[   605s] c_d1_e15_val: {\"event\": \"train\", \"step\": 23400, \"loss\": 0.01433, \"lr\": 0.001607, \"t\": 409.6}\n"}
+,{"stream_name":"stdout","time":906.058337804,"data":"[   905s] c_d1_e15_val: {\"event\": \"train\", \"step\": 40600, \"loss\": 0.01329, \"lr\": 0.000974, \"t\": 710.4}\n"}
+,{"stream_name":"stdout","time":1206.063388056,"data":"[  1205s] c_d1_e15_val: {\"event\": \"train\", \"step\": 57800, \"loss\": 0.01297, \"lr\": 0.000363, \"t\": 1010.7}\n"}
+,{"stream_name":"stdout","time":1506.068958869,"data":"[  1505s] c_d1_e15_val: {\"event\": \"train\", \"step\": 75000, \"loss\": 0.01301, \"lr\": 5.1e-05, \"t\": 1310.1}\n"}
+,{"stream_name":"stdout","time":1586.070835121,"data":"[  1585s] finished c_d1_e15_val rc=0 in 1420s :: {\"event\": \"train\", \"step\": 78600, \"loss\": 0.01292, \"lr\": 4e-05, \"t\": 1372.4} | {\"event\": \"val\", \"step\": 78675, \"F1_strong_q\": 66.681, \"F1_weak_q\": 78.469, \"F1_strong_px\": 77.738, \"F1_weak_px\": 59.047, \"FPR_tile_text10\": 64.769, \"FPR_tile_official640\": 8.541, \"AUPRC_ap\": 67.291, \"AUPRC_trapz16\": 66.611, \"t\": 1382.4} | {\"event\": \"done\", \"secs\": 1382.4, \"t\": 1382.4}\n"}
+,{"stream_name":"stdout","time":1586.071203039,"data":"ALL RUNS DONE 1585 s\n"}
+,{"stream_name":"stdout","time":1586.071519142,"data":"KERNEL DONE 1585 s\n"}
+,{"stream_name":"stderr","time":1588.067482641,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1588.067513995,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1588.292449284,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1588.292476258,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1589.034079551,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1589.926490155,"data":"[NbConvertApp] Writing 355466 bytes to __results__.html\n"}
+]
