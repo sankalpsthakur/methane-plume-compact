@@ -23,4 +23,10 @@ rm -f "$T/ledger.csv"; scripts/gpu_gate.sh record wide sankalpsthakur/bench-gas-
 scripts/gpu_gate.sh record wide2 sankalpsthakur/bench-gas-gpu-wide 0.63 --after 2.70 --gpus 2 --wall-s 1800 > /dev/null; grep -q ",wide2,.*,0.63,2.70,2.07,1.00,gpus x wall (2 x 1800 s)" "$T/ledger.csv" || { echo "wall x gpus row wrong"; cat "$T/ledger.csv"; exit 1; }
 printf '[{"stream_name":"stdout","time":1.5,"data":"x"}\n,{"stream_name":"stdout","time":3000.5,"data":"y"}\n]' > "$T/k.log"; scripts/gpu_gate.sh record wide3 sankalpsthakur/bench-gas-gpu-wide 0.63 --after 2.70 --gpus 2 --log "$T/k.log" > /dev/null; grep -q ",wide3,.*,0.63,2.70,2.07,1.68,gpus x wall (2 x 3030 s)" "$T/ledger.csv" || { echo "log-derived row wrong"; cat "$T/ledger.csv"; exit 1; }
 rm -f "$T/ledger.csv"; for k in probe wide compact control; do run kernels/gpu-$k; expect 0 "gpu-$k passes the gate on a fresh account"; done
+# wave 4 (Amendment 7): the same gate with a 5.0 h cap in total and no retry reserve, on its own ledger
+echo "utc,stage,ref,used_before_h,used_after_h,account_delta_h,billed_h,source" > "$T/w4.csv"; echo "t,a,x,0,3,3.00,3.00,gpus x wall" >> "$T/w4.csv"
+LEDGER="$T/w4.csv" GAS_CAP_H=5.0 RESERVE_H=0.0 run kernels/gpu-wide;      expect 1 "wave 4: 3.00 h billed + 2.17 h cap exceeds 5.0 h"
+printf 'utc,stage,ref,used_before_h,used_after_h,account_delta_h,billed_h,source\nt,a,x,0,2,2.00,2.00,gpus x wall\n' > "$T/w4b.csv"
+LEDGER="$T/w4b.csv" GAS_CAP_H=5.0 RESERVE_H=0.0 run kernels/gpu-wide;     expect 0 "wave 4: 2.00 h billed + 2.17 h cap fits 5.0 h"
+LEDGER="$T/w4.csv" run kernels/gpu-wide;                                 expect 0 "default settings unchanged: 3.00 h + 2.17 h <= 7.0 h"
 echo "gpu_gate: $((ok + 4)) checks ok"

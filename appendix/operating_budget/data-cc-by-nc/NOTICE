@@ -1,0 +1,19 @@
+CC BY-NC 4.0: non-commercial use only
+
+The two tables in this folder (tile_scores.csv, pixel_counts.csv) are derived from the STARCOP dataset:
+
+  Ruzicka, V., Mateo-Garcia, G., Gomez-Chova, L., Vaughan, A., Guanter, L., Markham, A.
+  "STARCOP dataset: Semantic Segmentation of Methane Plumes with Hyperspectral Machine Learning Models", v1.0.
+  Zenodo, 2023. https://doi.org/10.5281/zenodo.7863343
+  Licensed CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
+  (The Kaggle mirror's "MIT" label is not the dataset's licence.)
+
+Derived content and changes made: test-tile identifiers, acquisition dates, flights, emission rates (qplume) and annotation
+mask pixel counts come from the dataset's test.csv and label masks; the per-tile statistic and the tp/fp/fn/tn counts come
+from the released STARCOP checkpoints (isp-uv-es/starcop, CC BY-NC 4.0) and from the raw mag1c enhancement product applied to
+those tiles, as saved by the plume operating-budget audit of 2026-10-11. The records were reformatted from JSON to CSV; the
+per-tile score hashes were dropped. No other change. No imagery, checkpoint or score map is included.
+
+These files are NOT covered by the Apache-2.0 licence of the code in the parent folder. You may share and adapt them for
+non-commercial purposes with attribution to the authors above, a link to the licence, and an indication of changes.
+Commercial use is not permitted.

@@ -6,6 +6,8 @@
 #  (3) CFG bench_sampler (smoke only): timed CropSampler loop on the real train cache, writes sampler_bench.json;
 #  (5) the page-cache warm-up is bounded (CFG warm_timeout_s, default 600 s) and the soft deadline escalates SIGTERM -> SIGKILL -> abandon, so a hung process or a slow mount cannot hold the session until the platform timeout;
 #  (4) CFG edge_runs (optional) limits the ONNX/int8 edge stage to the named runs (the paper-recipe control shares G2's queue but is not exported); RUN_STATUS.json (device, rc, seconds of every run) is written after the runs; CFG deadline_s = soft deadline (running runs are terminated, pending runs not started, finished runs and the edge stage are kept).
+#  (6) Amendment 7 (WV3 wave), additive and inert for every AVIRIS CFG: CFG imagenet {url, sha256_prefix} downloads the ImageNet MobileNetV2 weights once and verifies the hash before the cache warm-up (run key "pretrained" passes the file to train.py);
+#      run keys test_kind and in_ch are passed through (CFG test_cache = a kernel-local directory for the computed WV3 test features); the warm-up skips cache files that do not exist (the WV3 cache has no train_W.npy).
 # Training, evaluation, scoring and edge code (src/starcop_edge) are untouched by this file.
 import json, os, subprocess, sys, time
 from starcop_edge.kio import find_dir
@@ -25,8 +27,17 @@ if any(r.get("device", "cpu").startswith("cuda") for r in CFG["runs"]) and NGPU 
     raise SystemExit("no GPU visible in this session: stopping before any quota is spent on the cache warm-up")
 if CFG.get("max_gpus") is not None and NGPU > CFG["max_gpus"]:  # the quota is billed per GPU held (Amendment 5): the caps were computed for max_gpus GPUs
     raise SystemExit(f"{NGPU} GPUs visible but the budget assumes at most {CFG['max_gpus']} (billed per GPU): stopping before more quota is spent")
+PRETRAINED = None
+if CFG.get("imagenet"):  # Amendment 7: the paper-recipe control starts from the ImageNet MobileNetV2 encoder; a wrong or missing file stops the kernel here, seconds in, before the cache warm-up and any training
+    import hashlib, urllib.request
+    spec = CFG["imagenet"]; PRETRAINED = "/kaggle/working/imagenet_mobilenet_v2.pth"
+    with urllib.request.urlopen(spec["url"], timeout=120) as resp, open(PRETRAINED, "wb") as fh: fh.write(resp.read())
+    digest = hashlib.sha256(open(PRETRAINED, "rb").read()).hexdigest()
+    print("ImageNet MobileNetV2 weights:", spec["url"], "sha256", digest, flush=True)
+    if not digest.startswith(spec["sha256_prefix"]): raise SystemExit(f"ImageNet weights sha256 {digest[:16]} does not start with {spec['sha256_prefix']}: stopping before any GPU time is spent")
 t0 = time.time(); WARM_S = CFG.get("warm_timeout_s", 600)
 for f in ("train_X.npy", "train_Y.npy", "train_W.npy"):  # warm the page cache once, shared by all processes; measured 41-145 s for the 9 GB, a mount slower than WARM_S is a showstopper for the planned rates
+    if not os.path.exists(f"{cache}/{f}"): continue  # the WV3 cache has no train_W.npy
     try: subprocess.run(["cat", f"{cache}/{f}"], stdout=subprocess.DEVNULL, timeout=max(1.0, WARM_S - (time.time() - t0)))
     except subprocess.TimeoutExpired: raise SystemExit(f"page-cache warm-up exceeded {WARM_S} s at {f}: the cache mount is too slow for the planned rates, stopping before more quota is spent")
 print("page cache warmed in", round(time.time() - t0), "s", flush=True)
@@ -54,6 +65,11 @@ def argv(r, dev):
     if r.get("val_max"): a += ["--val_max", str(r["val_max"])]
     if r.get("test_eval"): a += ["--test_eval", "--test_mirror", mirror, "--assets", assets]
     if r.get("allow_test_with_val"): a += ["--allow_test_with_val"]
+    if r.get("pretrained"):
+        assert PRETRAINED, "run asks for pretrained weights but CFG has no imagenet block"; a += ["--pretrained", PRETRAINED]
+    if r.get("test_kind"): a += ["--test_kind", r["test_kind"]]
+    if CFG.get("test_cache") and r.get("test_kind") == "wv3": a += ["--test_cache", CFG["test_cache"]]   # kernel-local (/tmp): the WV3 test features are computed once per kernel, not once per run
+    if r.get("in_ch"): a += ["--in_ch", str(r["in_ch"])]
     if r.get("plateau_every"): a += ["--plateau_every", str(r["plateau_every"])]
     if r.get("log_every"): a += ["--log_every", str(r["log_every"])]
     return a

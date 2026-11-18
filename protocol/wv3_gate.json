@@ -1,0 +1,44 @@
+{
+ "verdict": "FAIL",
+ "primary": "AUPRC_ap",
+ "control": 9.431,
+ "band": [
+  11.08,
+  15.0
+ ],
+ "published_row": "varon_sanchez",
+ "z": -1.84,
+ "columns": {
+  "AUPRC_ap": {
+   "control": 9.431,
+   "published_mean": 13.04,
+   "published_sd": 1.96,
+   "z": -1.84
+  },
+  "F1_strong_q": {
+   "control": 17.015,
+   "published_mean": 31.89,
+   "published_sd": 2.44,
+   "z": -6.1
+  },
+  "F1_weak_q": {
+   "control": 18.177,
+   "published_mean": 11.04,
+   "published_sd": 0.75,
+   "z": 9.52
+  },
+  "FPR_tile_text10": {
+   "control": 39.429,
+   "published_mean": 90.51,
+   "published_sd": 4.23,
+   "z": -12.08
+  }
+ },
+ "variants_labelled_not_gated": {
+  "AUPRC_trapz16": 10.538,
+  "F1_strong_px": 18.352,
+  "F1_weak_px": 14.148,
+  "FPR_tile_official640": 4.571
+ },
+ "rc": 0
+}

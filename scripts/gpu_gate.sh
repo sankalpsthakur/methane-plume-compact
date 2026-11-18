@@ -7,10 +7,10 @@
 # Gate: (1) after the quota refresh 2026-10-10T00:00Z; (2) metadata is_private, enable_gpu, machine_shape set; (3) cfg has billed_cap_s, wall_cap_s, billing_b and billing_b x wall_cap_s <= billed_cap_s;
 # (4) no locks/kaggle-gpu; (5) `kaggle quota` remaining >= the billed cap; (6) gas ledger + billed cap <= 7.0 h (the 8 h gas cap minus the 1 h retry reserve), or <= 8.0 h with --retry
 # (a retry needs an infrastructure cause announced first in STATUS.md, Amendment 5 item 7; the flag only opens the reserve, it does not grant the retry).
-# Test hooks: KAGGLE_BIN, LOCKS_DIR, LEDGER, GATE_NOW.
+# Test hooks / wave settings: KAGGLE_BIN, LOCKS_DIR, LEDGER, GATE_NOW, GAS_CAP_H, RESERVE_H.
 set -u; cd "$(dirname "$0")/.." || exit 1
 K=${KAGGLE_BIN:-$HOME/.local/bin/kaggle}; LOCKS=${LOCKS_DIR:-../locks}; LEDGER=${LEDGER:-results/gpu_ledger.csv}; NOW=${GATE_NOW:-$(date -u +%FT%TZ)}
-GAS_CAP_H=8.0; RESERVE_H=1.0
+GAS_CAP_H=${GAS_CAP_H:-8.0}; RESERVE_H=${RESERVE_H:-1.0}   # AVIRIS waves: 8.0 h cap with a 1.0 h retry reserve. Wave 4 (WV3, Amendment 7): GAS_CAP_H=5.0 RESERVE_H=0.0 LEDGER=results/gpu_ledger_w4.csv (5.0 h in total, no reserve)
 quota() { $K quota 2>&1 | awk -v col="$1" '/^GPU/{v=$col; gsub("h","",v); print v}'; }
 if [ "${1:-}" = "record" ]; then
   [ $# -ge 4 ] || { echo "usage: gpu_gate.sh record <stage> <ref> <used_before_h> [--after H] [--gpus N --log FILE | --gpus N --wall-s S]"; exit 2; }
@@ -31,7 +31,7 @@ if [ -n "$CAP" ] && [ -n "$WALL" ] && [ -n "$B" ] && awk -v b="$B" -v w="$WALL" 
 REM=$(quota 3); USED=$(quota 2); CAPH=$(awk -v c="${CAP:-0}" 'BEGIN{printf "%.3f", c/3600}')
 [ -n "$REM" ] && awk -v r="$REM" -v c="$CAPH" 'BEGIN{exit !(r >= c)}' && chk ok "kaggle quota: ${REM} h remaining >= billed cap ${CAPH} h (used now ${USED} h)" || chk bad "kaggle quota: remaining '${REM}' h is below the billed cap ${CAPH} h (or quota unreadable)"
 GAS=$([ -f "$LEDGER" ] && awk -F, 'NR>1{s+=$7} END{printf "%.3f", s+0}' "$LEDGER" || echo 0.000); LIMIT=$(awk -v g="$GAS_CAP_H" -v r="$RESERVE_H" -v f="$RETRY" 'BEGIN{print (f=="--retry") ? g : g-r}')
-awk -v u="$GAS" -v c="$CAPH" -v l="$LIMIT" 'BEGIN{exit !(u + c <= l + 1e-9)}' && chk ok "gas ledger: ${GAS} h billed so far + cap ${CAPH} h <= ${LIMIT} h ($([ "$RETRY" = "--retry" ] && echo "retry reserve opened" || echo "8 h gas cap minus the 1 h retry reserve"))" || chk bad "gas ledger: ${GAS} h billed so far + cap ${CAPH} h > ${LIMIT} h"
+awk -v u="$GAS" -v c="$CAPH" -v l="$LIMIT" 'BEGIN{exit !(u + c <= l + 1e-9)}' && chk ok "gas ledger: ${GAS} h billed so far + cap ${CAPH} h <= ${LIMIT} h ($([ "$RETRY" = "--retry" ] && echo "retry reserve opened" || echo "${GAS_CAP_H} h cap minus the ${RESERVE_H} h retry reserve"))" || chk bad "gas ledger: ${GAS} h billed so far + cap ${CAPH} h > ${LIMIT} h"
 if [ $fail -ne 0 ]; then echo "GATE: FAIL, do not push"; exit 1; fi
 NAME=${REF#*/bench-gas-}; END=$(date -u -v+$((WALL + 300))S +%FT%TZ 2>/dev/null || echo "now+$((WALL + 300))s")
 echo "GATE: PASS. Note 'used now' ${USED} h as <used_before>; then (one GPU session at a time):"

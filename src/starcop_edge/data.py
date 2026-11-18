@@ -16,10 +16,12 @@ WIN, STRIDE, POS_PIX = 128, 64, 40  # 10/64^2 * 128^2 = 40 px, as in the officia
 
 
 def load_split(d, split, mmap=True):
+    """X, Y, W, meta of one cache. W (the mag1c loss weights) is None when the cache has no {split}_W.npy file: the WV3 caches (Amendment 7) carry no mag1c product, the loss weight is then 1 everywhere."""
     mm = "r" if mmap else None
     X = np.load(os.path.join(d, f"{split}_X.npy"), mmap_mode=mm)
     Y = np.load(os.path.join(d, f"{split}_Y.npy"), mmap_mode=mm)
-    Wt = np.load(os.path.join(d, f"{split}_W.npy"), mmap_mode=mm)
+    wp = os.path.join(d, f"{split}_W.npy")
+    Wt = np.load(wp, mmap_mode=mm) if os.path.exists(wp) else None
     meta = pd.read_csv(os.path.join(d, f"{split}_meta.csv"))
     return X, Y, Wt, meta
 
@@ -52,7 +54,8 @@ class CropSampler:
     each get half of the probability mass), optional jitter, D4 augmentation."""
 
     def __init__(self, X, Y, Wt, idx, seed=0, jitter=32, pos_frac=0.5, batch=32, prefetch=6, hardneg=0.0):
-        self.X, self.Y, self.Wt = X, Y, Wt
+        self.X, self.Y, self.Wt = X, Y, Wt          # Wt None: uniform loss weight 1 (WV3 caches, no mag1c product)
+        self._ones = np.full((WIN, WIN), 255, np.uint8) if Wt is None else None
         self.rng = np.random.default_rng(seed)
         rows, cnts, acts = window_table(Y, idx, X if hardneg > 0 else None)
         self.pos_w = rows[cnts > POS_PIX]
@@ -60,6 +63,8 @@ class CropSampler:
         self.hard_w = rows[neg & (acts >= ACT_PIX)]; self.neg_w = rows[neg & ~(acts >= ACT_PIX)] if hardneg > 0 else rows[neg]
         self.jitter, self.pos_frac, self.batch, self.hardneg = jitter, pos_frac, batch, hardneg
         self.n_pos_windows, self.n_neg_windows, self.n_hard_windows = len(self.pos_w), len(self.neg_w), len(self.hard_w)
+        if (pos_frac > 0 and not len(self.pos_w)) or (pos_frac < 1 and not len(self.neg_w)):   # an empty pool used to kill the producer thread and hang the consumer (billed GPU time): refuse at once
+            raise ValueError(f"CropSampler: empty window pool (plume windows {len(self.pos_w)}, non-plume windows {len(self.neg_w)}) for {len(idx)} tiles")
         self._q = queue.Queue(maxsize=prefetch)
         self._stop = False
         self._th = threading.Thread(target=self._run, daemon=True)
@@ -73,7 +78,8 @@ class CropSampler:
         if self.jitter:
             r = int(np.clip(r + self.rng.integers(-self.jitter, self.jitter + 1), 0, 512 - WIN))
             c = int(np.clip(c + self.rng.integers(-self.jitter, self.jitter + 1), 0, 512 - WIN))
-        x = np.asarray(self.X[t, :, r:r + WIN, c:c + WIN]); y = np.asarray(self.Y[t, r:r + WIN, c:c + WIN]); w = np.asarray(self.Wt[t, r:r + WIN, c:c + WIN])
+        x = np.asarray(self.X[t, :, r:r + WIN, c:c + WIN]); y = np.asarray(self.Y[t, r:r + WIN, c:c + WIN])
+        w = np.asarray(self.Wt[t, r:r + WIN, c:c + WIN]) if self.Wt is not None else self._ones
         k = int(self.rng.integers(4))
         if k:
             x, y, w = np.rot90(x, k, (1, 2)), np.rot90(y, k), np.rot90(w, k)
@@ -82,13 +88,18 @@ class CropSampler:
         return x, y, w
 
     def _run(self):
-        while not self._stop:
-            xs, ys, ws = zip(*[self._one() for _ in range(self.batch)])
-            self._q.put((np.stack(xs).astype(np.float32), np.stack(ys).astype(np.float32)[:, None],
-                         (np.stack(ws).astype(np.float32) / 255.0)[:, None]))
+        try:
+            while not self._stop:
+                xs, ys, ws = zip(*[self._one() for _ in range(self.batch)])
+                self._q.put((np.stack(xs).astype(np.float32), np.stack(ys).astype(np.float32)[:, None],
+                             (np.stack(ws).astype(np.float32) / 255.0)[:, None]))
+        except BaseException as e:   # surface a producer failure in the consumer: a silent thread death used to leave next() blocked until the platform timeout
+            self._q.put(e)
 
     def next(self):
-        return self._q.get()
+        item = self._q.get()
+        if isinstance(item, BaseException): raise RuntimeError("CropSampler producer thread failed") from item
+        return item
 
     def close(self):
         self._stop = True

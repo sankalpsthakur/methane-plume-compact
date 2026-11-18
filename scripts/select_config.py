@@ -11,12 +11,13 @@ SIZE_EQ = 0.01   # Amendment 4 size-equality tolerance (parameters)
 def composite(m, fpr="FPR_tile_text10"):
     return (m["F1_strong_q"] + m["F1_weak_q"] + (100.0 - m[fpr]) + m["AUPRC_ap"]) / 4.0
 
-def load_runs(d):
+def load_runs(d, exclude=()):
+    """exclude: run directories that are not candidates (Amendment 7: the paper-recipe control shares the stage-A kernel and writes val_metrics.json too; it must not enter the band)."""
     runs, incomplete = {}, []
     for rd in sorted(glob.glob(os.path.join(d, "*"))):
         if not os.path.isdir(rd): continue
         name = os.path.basename(rd)
-        if name == "logs": continue  # per-run stdout logs of the dev kernel, not a run directory
+        if name == "logs" or name in exclude: continue  # per-run stdout logs of the dev kernel, not a run directory
         mp = os.path.join(rd, "val_metrics.json"); lp = os.path.join(rd, "log.jsonl")
         if not (os.path.exists(mp) and os.path.exists(lp)): incomplete.append(name); continue
         start = next(json.loads(l) for l in open(lp) if '"event": "start"' in l)
@@ -34,13 +35,15 @@ def select(runs, tol=2.0):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("dir"); ap.add_argument("--out", default="protocol/selection.json"); ap.add_argument("--tol", type=float, default=2.0)
+    ap.add_argument("--exclude", default="", help="comma list of run directories that are not candidates (Amendment 7: the control, and candidates whose five G2 seeds do not fit stage B)")
     a = ap.parse_args()
-    runs, incomplete = load_runs(a.dir)
+    excl = tuple(x for x in a.exclude.split(",") if x)
+    runs, incomplete = load_runs(a.dir, excl)
     assert runs, "no completed dev run"
     chosen, best, band, cands = select(runs, a.tol)
     print(f"{'run':6s} {'params':>9s} {'C':>7s}  F1s    F1w    FPR10  AUPRC  (C with 640-rule FPR, logged only)")
     for n, r in sorted(runs.items()):
         m = r["metrics"]; print(f"{n:6s} {r['params']:9d} {r['C']:7.2f}  {m['F1_strong_q']:5.1f}  {m['F1_weak_q']:5.1f}  {m['FPR_tile_text10']:5.1f}  {m['AUPRC_ap']:5.1f}  ({r['C_official640_logged_only']:.2f})")
     print("not completed (excluded):", incomplete or "none"); print(f"best C {best:.2f} | band (>= best - {a.tol}): {band} | smallest-size candidates: {cands} -> CHOSEN {chosen}")
-    json.dump(dict(chosen=chosen, best_C=best, tol=a.tol, band=band, smallest_size_candidates=cands, not_completed=incomplete,
+    json.dump(dict(chosen=chosen, best_C=best, tol=a.tol, band=band, smallest_size_candidates=cands, not_completed=incomplete, **({"excluded": list(excl)} if excl else {}),
                    runs={n: {k: v for k, v in r.items() if k != "metrics"} | {"val_metrics": r["metrics"]} for n, r in runs.items()}), open(a.out, "w"), indent=1)

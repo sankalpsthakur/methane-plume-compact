@@ -12,7 +12,8 @@ from .models import EdgeUNet, SMPLikeUnet, count_params
 
 def load_run(run_dir):
     ck = torch.load(os.path.join(run_dir, "model.pt"), map_location="cpu", weights_only=False)
-    net = EdgeUNet(4, tuple(ck["widths"]), ck["dec_widths"], stem_stride=ck.get("stem_stride", 1)) if ck.get("arch", "edge") == "edge" else SMPLikeUnet(4, 1)
+    in_ch = ck.get("in_ch", 4)   # checkpoints of the AVIRIS waves predate the key
+    net = EdgeUNet(in_ch, tuple(ck["widths"]), ck["dec_widths"], stem_stride=ck.get("stem_stride", 1)) if ck.get("arch", "edge") == "edge" else SMPLikeUnet(in_ch, 1)
     net.load_state_dict(ck["state_dict"]); return net.eval(), ck
 
 
@@ -37,7 +38,8 @@ def _export_and_score(name, net, params, rd_bytes, outdir, calib, Xt, Yt, q, mt,
     net = net.eval(); fused = edge.fuse_conv_bn(net)
     xt = torch.from_numpy(np.asarray(Xt[0], dtype=np.float32))[None]
     with torch.no_grad(): d_fuse = float((net(xt) - fused(xt)).abs().max())
-    edge.export_onnx(net, p32); edge.quantize_int8(p32, p8, calib, method="minmax", per_channel=True)
+    in_ch = int(Xt.shape[1])
+    edge.export_onnx(net, p32, in_ch=in_ch); edge.quantize_int8(p32, p8, calib, method="minmax", per_channel=True)
     rec = {"params": params, "pt_state_bytes": rd_bytes, "onnx_fp32_bytes": os.path.getsize(p32), "onnx_int8_bytes": os.path.getsize(p8), "bn_fold_maxabs": d_fuse}
     s32 = edge.ort_session(p32, threads=1)
     with torch.no_grad(): ref = net(xt).numpy()
@@ -48,7 +50,7 @@ def _export_and_score(name, net, params, rd_bytes, outdir, calib, Xt, Yt, q, mt,
         np.savez_compressed(f"{outdir}/{name}_{tag}_test_summaries.npz", **S, qplume=q, ids=mt.id.values.astype(str))
         rec[tag] = {k: round(m[k], 3) for k in ["F1_strong_q", "F1_weak_q", "F1_strong_px", "F1_weak_px", "FPR_tile_text10", "FPR_tile_official640", "AUPRC_ap", "AUPRC_trapz16"]}
         rec[tag + "_secs_per_tile_4thr"] = round((time.time() - t) / len(Xt), 3)
-        rec[tag + "_latency_ms_1thread_kaggle(median,min)"] = edge.latency_ms(edge.ort_session(path, threads=1), n=8, warm=2)
+        rec[tag + "_latency_ms_1thread_kaggle(median,min)"] = edge.latency_ms(edge.ort_session(path, threads=1), in_ch=in_ch, n=8, warm=2)
         log(name, tag, json.dumps(rec[tag]))
     return rec
 

@@ -1,0 +1,149 @@
+{
+ "model": {
+  "FRAC": 0.95,
+  "EFF": 0.8,
+  "RHO": 1.15,
+  "K_OVER": 200,
+  "INIT_S": 40,
+  "EVAL_S": 30,
+  "CTRL_EFF": 0.776,
+  "CTRL_TEST_S": 220,
+  "SEED_TEST_FIRST_S": 200,
+  "SEED_TEST_CACHED_S": 60,
+  "P": 2
+ },
+ "billing_b": 2,
+ "tiers": [
+  5,
+  4,
+  3
+ ],
+ "control_epochs": 15,
+ "control_steps": 66645,
+ "caps_billed_s": {
+  "probe": 600,
+  "a": 12000,
+  "b": 5400
+ },
+ "caps_wall_s": {
+  "probe": 300,
+  "a": 6000,
+  "b": 2700
+ },
+ "total_cap_billed_h": 5.0,
+ "sampler_batches_per_s": 83.7,
+ "imagenet_check": {
+  "load_ok": true,
+  "hash_ok": true
+ },
+ "tiers_tried": {
+  "5": {
+   "epochs": 5,
+   "steps": 26225,
+   "rates_steps_per_s": {
+    "d3": 34.69,
+    "d2": 46.83,
+    "d1": 57.08,
+    "control": 14.4
+   },
+   "stage_a": {
+    "control_job_s": 4917,
+    "g1_job_s": {
+     "d3": 826,
+     "d2": 630,
+     "d1": 529
+    },
+    "g1_chain_s": 1986,
+    "wall_s": 5117,
+    "billed_s": 10235,
+    "fit_limit_billed_s": 11400.0,
+    "fits": true,
+    "g1_hidden_under_control": true,
+    "soft_deadline_wall_s": 5850
+   },
+   "stage_b": {
+    "seed_job_s": {
+     "d3": 796,
+     "d2": 600,
+     "d1": 499
+    },
+    "wall_s": {
+     "d3": 2908,
+     "d2": 2320,
+     "d1": 2018
+    },
+    "billed_s": {
+     "d3": 5817,
+     "d2": 4640,
+     "d1": 4037
+    },
+    "fit_limit_billed_s": 5130.0,
+    "feasible_candidates": [
+     "d1",
+     "d2"
+    ],
+    "infeasible_candidates": [
+     "d3"
+    ],
+    "soft_deadline_wall_s": 2550
+   },
+   "projected_total_billed_h": 4.18
+  }
+ },
+ "chosen": {
+  "epochs": 5,
+  "steps": 26225,
+  "rates_steps_per_s": {
+   "d3": 34.69,
+   "d2": 46.83,
+   "d1": 57.08,
+   "control": 14.4
+  },
+  "stage_a": {
+   "control_job_s": 4917,
+   "g1_job_s": {
+    "d3": 826,
+    "d2": 630,
+    "d1": 529
+   },
+   "g1_chain_s": 1986,
+   "wall_s": 5117,
+   "billed_s": 10235,
+   "fit_limit_billed_s": 11400.0,
+   "fits": true,
+   "g1_hidden_under_control": true,
+   "soft_deadline_wall_s": 5850
+  },
+  "stage_b": {
+   "seed_job_s": {
+    "d3": 796,
+    "d2": 600,
+    "d1": 499
+   },
+   "wall_s": {
+    "d3": 2908,
+    "d2": 2320,
+    "d1": 2018
+   },
+   "billed_s": {
+    "d3": 5817,
+    "d2": 4640,
+    "d1": 4037
+   },
+   "fit_limit_billed_s": 5130.0,
+   "feasible_candidates": [
+    "d1",
+    "d2"
+   ],
+   "infeasible_candidates": [
+    "d3"
+   ],
+   "soft_deadline_wall_s": 2550
+  },
+  "projected_total_billed_h": 4.18
+ },
+ "verdict": "OK",
+ "probe_device": "Tesla T4",
+ "probe_torch": "2.11.0+cu128",
+ "machine_shape": "NvidiaTeslaT4"
+}

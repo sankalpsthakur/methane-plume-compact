@@ -1,0 +1,38 @@
+# produced by: recompute_operating_budget.py --tables data-cc-by-nc --published RESULTS.json (the audit kit) --baseline <the track's kernel_outputs/baseline>
+reference | rule | neg indications | worst-date FPR | weak localized (n/108, recall) | weak mean IoU | weak F1 pixel (108 / 110) | strong F1
+released-mag1c-rgb | standard | 71/175 | 48.98% | 85/108 = 78.70% | 0.457785 | 53.73 / 42.34 | 83.08
+released-mag1c-rgb | 0.01 | 4/175 | 5.71% | 7/108 = 6.48% | 0.012326 | 13.04 / 12.83 | 26.79
+released-mag1c-rgb | 0.05 | 13/175 | 14.29% | 36/108 = 33.33% | 0.141410 | 42.44 / 36.41 | 67.27
+released-mag1c-rgb | 0.1 | 20/175 | 21.43% | 63/108 = 58.33% | 0.243054 | 50.64 / 41.65 | 76.19
+released-mag1c-only | standard | 63/175 | 51.02% | 77/108 = 71.30% | 0.405292 | 58.58 / 48.76 | 66.74
+released-mag1c-only | 0.01 | 5/175 | 7.14% | 7/108 = 6.48% | 0.016608 | 4.39 / 4.36 | 6.42
+released-mag1c-only | 0.05 | 9/175 | 11.43% | 30/108 = 27.78% | 0.114492 | 25.89 / 25.67 | 37.93
+released-mag1c-only | 0.1 | 17/175 | 16.33% | 43/108 = 39.81% | 0.183826 | 36.52 / 35.75 | 50.23
+raw-mag1c | standard | 175/175 | 100.00% | 5/108 = 4.63% | 0.031543 | 5.27 / 5.01 | 21.63
+raw-mag1c | 0.01 | 0/175 | 0.00% | 0/108 = 0.00% | 0.000000 | 0.00 / 0.00 | 0.00
+raw-mag1c | 0.05 | 7/175 | 7.14% | 0/108 = 0.00% | 0.000705 | 0.47 / 0.46 | 0.55
+raw-mag1c | 0.1 | 18/175 | 14.29% | 1/108 = 0.93% | 0.003817 | 2.38 / 2.37 | 3.55
+
+primary 5% rule, per held-out date (negative indications, weak localized, calibration tiles, rank, threshold)
+released-mag1c-rgb 2019-10-18: 3/49 | 4/24 | 126 | 121 | 4.852273464202881
+released-mag1c-rgb 2019-10-21: 10/70 | 32/61 | 105 | 101 | 3.50677752494812
+released-mag1c-rgb 2019-10-25: 0/56 | 0/23 | 119 | 114 | 5.97664213180542
+released-mag1c-only 2019-10-18: 1/49 | 3/24 | 126 | 121 | 3.512446880340576
+released-mag1c-only 2019-10-21: 8/70 | 26/61 | 105 | 101 | 2.3818798065185547
+released-mag1c-only 2019-10-25: 0/56 | 1/23 | 119 | 114 | 3.7756595611572266
+raw-mag1c 2019-10-18: 0/49 | 0/24 | 126 | 121 | 12614.294921875
+raw-mag1c 2019-10-21: 5/70 | 0/61 | 105 | 101 | 8978.6162109375
+raw-mag1c 2019-10-25: 2/56 | 0/23 | 119 | 114 | 10624.4453125
+
+research bar (<= 5% on every date, >= 80% weak localized recall, >= 0.25 mean weak IoU), 5% rule
+released-mag1c-rgb: budget False, recall False, IoU False -> failed
+released-mag1c-only: budget False, recall False, IoU False -> failed
+raw-mag1c: budget False, recall False, IoU False -> failed
+
+comparison with the track's own per-tile summaries (standard rule = logit > 0, i.e. p > 0.5)
+released-mag1c-rgb: tiles 342, tiles with a differing count: {'tp': 0, 'fp': 0, 'fn': 0, 'tn': 0, 'n_pos_vs_label_pixels': 0, 'qplume': 0}
+  from the track's counts: weak F1 42.34 on 110 tiles, 53.73 on 108 tiles
+released-mag1c-only: tiles 342, tiles with a differing count: {'tp': 0, 'fp': 0, 'fn': 0, 'tn': 0, 'n_pos_vs_label_pixels': 0, 'qplume': 0}
+  from the track's counts: weak F1 48.76 on 110 tiles, 58.58 on 108 tiles
+
+MISMATCHES: none

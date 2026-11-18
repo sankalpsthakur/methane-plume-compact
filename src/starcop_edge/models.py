@@ -187,6 +187,27 @@ def load_released_checkpoint(path, map_location="cpu"):
     return sd, ck
 
 
+# ImageNet-pretrained MobileNetV2 encoder of the paper's MultiSTARCOP models (Amendment 7): the torchvision file that segmentation_models_pytorch downloads for Unet('mobilenet_v2', encoder_weights='imagenet').
+# The file name carries the first 8 hex digits of its SHA-256 (torch hub convention): the kernels verify the download against SHA256_PREFIX before it is used.
+IMAGENET_MNV2 = dict(url="https://download.pytorch.org/models/mobilenet_v2-b0353104.pth", sha256_prefix="b0353104")
+
+
+def load_imagenet_encoder(model, state_dict):
+    """Copy torchvision MobileNetV2 weights ('features.N...' keys; 'classifier.*' is ignored) into model.encoder.features of an SMPLikeUnet. Every encoder tensor must be covered with an equal shape
+    (so the first convolution must have 3 input channels; BatchNorm num_batches_tracked may be absent: old files lack it). Raises ValueError on any gap, extra key or shape mismatch. Returns a small report."""
+    target = model.state_dict()
+    tgt = {k for k in target if k.startswith("encoder.features.")}
+    src = {"encoder." + k: v for k, v in state_dict.items() if k.startswith("features.")}
+    miss = sorted(k for k in tgt if k not in src and not k.endswith("num_batches_tracked"))
+    extra = sorted(k for k in src if k not in tgt)
+    bad = sorted(k for k in tgt if k in src and tuple(src[k].shape) != tuple(target[k].shape))
+    if miss or extra or bad:
+        raise ValueError(f"ImageNet MobileNetV2 weights do not fit the encoder: missing {miss[:4]} ({len(miss)}), unexpected {extra[:4]} ({len(extra)}), shape mismatch {bad[:4]} ({len(bad)})")
+    with torch.no_grad():
+        for k, v in src.items(): target[k].copy_(v.to(target[k].dtype))
+    return dict(tensors_loaded=len(src), encoder_tensors=len(tgt), classifier_keys_ignored=sum(k.startswith("classifier.") for k in state_dict), first_conv_shape=list(target["encoder.features.0.0.weight"].shape))
+
+
 def count_params(model, trainable_only=True):
     return sum(p.numel() for p in model.parameters() if (p.requires_grad or not trainable_only))
 

@@ -6,7 +6,7 @@ import torch.nn.functional as F
 
 from . import data as D
 from . import metrics as M
-from .models import EdgeUNet, SMPLikeUnet, count_params
+from .models import EdgeUNet, SMPLikeUnet, count_params, load_imagenet_encoder
 
 
 def parse_widths(s):
@@ -53,6 +53,10 @@ def main(argv=None):
     ap.add_argument("--threads", type=int, default=4); ap.add_argument("--jitter", type=int, default=32); ap.add_argument("--hardneg", type=float, default=0.0)
     ap.add_argument("--device", default="cpu"); ap.add_argument("--tag", default="run")
     ap.add_argument("--arch", default="edge", choices=["edge", "mnv2"], help="mnv2 = released-architecture control (6.6M params)")
+    ap.add_argument("--in_ch", type=int, default=0, help="input channels; 0 = the channel count of the cache (4 for the AVIRIS caches, 3 for the WV3 feature cache)")
+    ap.add_argument("--pretrained", default="", help="mnv2 only: torchvision ImageNet MobileNetV2 weights file for the encoder (the paper's MultiSTARCOP models; needs 3 input channels)")
+    ap.add_argument("--test_kind", default="aviris", choices=["aviris", "wv3"], help="which test loader --test_eval uses (wv3 reads the WV3 bands and applies the cache's wv3_feat_norm.json)")
+    ap.add_argument("--test_cache", default="", help="wv3 only: kernel-local directory (not /kaggle/working) where the computed test features are kept for the next run of the same kernel")
     ap.add_argument("--sched", default="cosine", choices=["cosine", "plateau"], help="plateau = paper recipe: x0.5 after 4 epochs w/o val-loss gain (val = held-out dates, never test)")
     ap.add_argument("--plateau_every", type=int, default=5245); ap.add_argument("--amp", action="store_true")
     ap.add_argument("--test_eval", action="store_true", help="after training, score the 342 official test tiles ONCE and save per-tile summaries")
@@ -74,7 +78,14 @@ def main(argv=None):
     if a.val_max and len(va_idx) > a.val_max:
         va_idx = np.sort(np.random.default_rng(123).choice(va_idx, a.val_max, replace=False))
     dec = parse_widths(a.dec_widths) if a.dec_widths else None
-    model = (SMPLikeUnet(4, 1) if a.arch == "mnv2" else EdgeUNet(4, parse_widths(a.widths), dec, stem_stride=a.stem_stride)).to(a.device)
+    in_ch = a.in_ch or int(X.shape[1])
+    if in_ch != int(X.shape[1]): raise SystemExit(f"--in_ch {in_ch} but the cache has {X.shape[1]} channels")
+    if Wt is None and a.hardneg: raise SystemExit("--hardneg reads channel 0 as the AVIRIS mag1c product: it needs a cache with train_W.npy (not the WV3 caches)")
+    if a.pretrained and (a.arch != "mnv2" or in_ch != 3): raise SystemExit("--pretrained is the ImageNet MobileNetV2 encoder: --arch mnv2 with 3 input channels")
+    model = (SMPLikeUnet(in_ch, 1) if a.arch == "mnv2" else EdgeUNet(in_ch, parse_widths(a.widths), dec, stem_stride=a.stem_stride))
+    pre_report = None
+    if a.pretrained: pre_report = load_imagenet_encoder(model, torch.load(a.pretrained, map_location="cpu"))
+    model = model.to(a.device)
     nparams = count_params(model)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd)
     samp = D.CropSampler(X, Y, Wt, tr_idx, seed=a.seed, jitter=a.jitter, batch=a.batch, hardneg=a.hardneg)
@@ -83,7 +94,7 @@ def main(argv=None):
         rec["t"] = round(time.time() - t0, 1); log.write(json.dumps(rec) + "\n"); log.flush(); print(json.dumps(rec), flush=True)
     t0 = time.time()
     emit(dict(event="start", tag=a.tag, args=vars(a), params=nparams, n_train_tiles=len(tr_idx), n_val_tiles=len(va_idx),
-              pos_windows=samp.n_pos_windows, neg_windows=samp.n_neg_windows, hard_neg_windows=samp.n_hard_windows))
+              pos_windows=samp.n_pos_windows, neg_windows=samp.n_neg_windows, hard_neg_windows=samp.n_hard_windows, **({"in_ch": in_ch, "pretrained": pre_report} if (in_ch != 4 or pre_report) else {})))
     pw = torch.tensor(a.pos_weight, device=a.device)
     use_amp = a.amp and str(a.device).startswith("cuda")
     scaler = torch.amp.GradScaler("cuda", enabled=True) if use_amp else None
@@ -118,7 +129,7 @@ def main(argv=None):
             m, _ = evaluate(model, X, Y, meta, va_idx, a.device)
             emit(dict(event="val", step=step + 1, **{k: round(m[k], 3) for k in ["F1_strong_q", "F1_weak_q", "F1_strong_px", "F1_weak_px", "FPR_tile_text10", "FPR_tile_official640", "AUPRC_ap", "AUPRC_trapz16"]}))
     samp.close()
-    torch.save({"state_dict": model.state_dict(), "arch": a.arch, "widths": parse_widths(a.widths), "dec_widths": dec, "stem_stride": a.stem_stride, "args": vars(a), "params": nparams},
+    torch.save({"state_dict": model.state_dict(), "arch": a.arch, "widths": parse_widths(a.widths), "dec_widths": dec, "stem_stride": a.stem_stride, "args": vars(a), "params": nparams, "in_ch": in_ch},
                os.path.join(a.out, "model.pt"))
     if len(va_idx):
         m, S = evaluate(model, X, Y, meta, va_idx, a.device)
@@ -126,7 +137,12 @@ def main(argv=None):
         json.dump(m, open(os.path.join(a.out, "val_metrics.json"), "w"), indent=1)
         emit(dict(event="val", step=a.steps, **{k: round(m[k], 3) for k in ["F1_strong_q", "F1_weak_q", "F1_strong_px", "F1_weak_px", "FPR_tile_text10", "FPR_tile_official640", "AUPRC_ap", "AUPRC_trapz16"]}))
     if a.test_eval:
-        Xt, Yt, _, mt = D.load_test_from_mirror(a.test_mirror, a.assets)
+        if a.test_kind == "wv3":
+            from . import wv3
+            norm_p = os.path.join(a.data, wv3.NORM_FILE)
+            Xt, Yt, _, mt = wv3.load_wv3_test_cached(a.test_mirror, a.assets, norm_p, a.test_cache) if a.test_cache else wv3.load_wv3_test_from_mirror(a.test_mirror, a.assets, norm_p)
+        else:
+            Xt, Yt, _, mt = D.load_test_from_mirror(a.test_mirror, a.assets)
         m, S = evaluate(model, Xt, Yt, mt, np.arange(len(mt)), a.device)
         np.savez_compressed(os.path.join(a.out, "test_summaries.npz"), **S, qplume=mt["qplume"].values, ids=mt["id"].values.astype(str))
         json.dump(m, open(os.path.join(a.out, "test_metrics.json"), "w"), indent=1)

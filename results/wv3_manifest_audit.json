@@ -1,0 +1,540 @@
+{
+ "bands": [
+  "TOA_WV3_SWIR1.tif",
+  "TOA_WV3_SWIR2.tif",
+  "TOA_WV3_SWIR3.tif",
+  "TOA_WV3_SWIR4.tif",
+  "TOA_WV3_SWIR5.tif",
+  "TOA_WV3_SWIR6.tif",
+  "TOA_WV3_SWIR7.tif",
+  "TOA_WV3_SWIR8.tif"
+ ],
+ "archives": {
+  "STARCOP_test": {
+   "zenodo": {
+    "tiles": 342,
+    "tiles_with_all_8": 342,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 342,
+     "TOA_WV3_SWIR2.tif": 342,
+     "TOA_WV3_SWIR3.tif": 342,
+     "TOA_WV3_SWIR4.tif": 342,
+     "TOA_WV3_SWIR5.tif": 342,
+     "TOA_WV3_SWIR6.tif": 342,
+     "TOA_WV3_SWIR7.tif": 342,
+     "TOA_WV3_SWIR8.tif": 342
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 336784955,
+     "TOA_WV3_SWIR2.tif": 338431406,
+     "TOA_WV3_SWIR3.tif": 337646156,
+     "TOA_WV3_SWIR4.tif": 337644118,
+     "TOA_WV3_SWIR5.tif": 340400719,
+     "TOA_WV3_SWIR6.tif": 339654061,
+     "TOA_WV3_SWIR7.tif": 340784832,
+     "TOA_WV3_SWIR8.tif": 342336196
+    },
+    "total_files": 2736,
+    "total_bytes": 2713682443
+   },
+   "mirror": {
+    "tiles": 342,
+    "tiles_with_all_8": 342,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 342,
+     "TOA_WV3_SWIR2.tif": 342,
+     "TOA_WV3_SWIR3.tif": 342,
+     "TOA_WV3_SWIR4.tif": 342,
+     "TOA_WV3_SWIR5.tif": 342,
+     "TOA_WV3_SWIR6.tif": 342,
+     "TOA_WV3_SWIR7.tif": 342,
+     "TOA_WV3_SWIR8.tif": 342
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 336784955,
+     "TOA_WV3_SWIR2.tif": 338431406,
+     "TOA_WV3_SWIR3.tif": 337646156,
+     "TOA_WV3_SWIR4.tif": 337644118,
+     "TOA_WV3_SWIR5.tif": 340400719,
+     "TOA_WV3_SWIR6.tif": 339654061,
+     "TOA_WV3_SWIR7.tif": 340784832,
+     "TOA_WV3_SWIR8.tif": 342336196
+    },
+    "total_files": 2736,
+    "total_bytes": 2713682443
+   },
+   "on_mirror": true,
+   "tiles_only_in_zenodo": 0,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 5632783317,
+   "uncompressed_member_bytes": 5865124499,
+   "zip_over_uncompressed": 0.9604,
+   "wv3_estimated_range_read_bytes": 2606182562
+  },
+  "STARCOP_train_easy": {
+   "zenodo": {
+    "tiles": 559,
+    "tiles_with_all_8": 559,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 559,
+     "TOA_WV3_SWIR2.tif": 559,
+     "TOA_WV3_SWIR3.tif": 559,
+     "TOA_WV3_SWIR4.tif": 559,
+     "TOA_WV3_SWIR5.tif": 559,
+     "TOA_WV3_SWIR6.tif": 559,
+     "TOA_WV3_SWIR7.tif": 559,
+     "TOA_WV3_SWIR8.tif": 559
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 539640437,
+     "TOA_WV3_SWIR2.tif": 543059193,
+     "TOA_WV3_SWIR3.tif": 542006831,
+     "TOA_WV3_SWIR4.tif": 541294136,
+     "TOA_WV3_SWIR5.tif": 545344914,
+     "TOA_WV3_SWIR6.tif": 544292288,
+     "TOA_WV3_SWIR7.tif": 545617169,
+     "TOA_WV3_SWIR8.tif": 548380628
+    },
+    "total_files": 4472,
+    "total_bytes": 4349635596
+   },
+   "mirror": {
+    "tiles": 559,
+    "tiles_with_all_8": 559,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 559,
+     "TOA_WV3_SWIR2.tif": 559,
+     "TOA_WV3_SWIR3.tif": 559,
+     "TOA_WV3_SWIR4.tif": 559,
+     "TOA_WV3_SWIR5.tif": 559,
+     "TOA_WV3_SWIR6.tif": 559,
+     "TOA_WV3_SWIR7.tif": 559,
+     "TOA_WV3_SWIR8.tif": 559
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 539640437,
+     "TOA_WV3_SWIR2.tif": 543059193,
+     "TOA_WV3_SWIR3.tif": 542006831,
+     "TOA_WV3_SWIR4.tif": 541294136,
+     "TOA_WV3_SWIR5.tif": 545344914,
+     "TOA_WV3_SWIR6.tif": 544292288,
+     "TOA_WV3_SWIR7.tif": 545617169,
+     "TOA_WV3_SWIR8.tif": 548380628
+    },
+    "total_files": 4472,
+    "total_bytes": 4349635596
+   },
+   "on_mirror": true,
+   "tiles_only_in_zenodo": 0,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 8997773286,
+   "uncompressed_member_bytes": 9375613738,
+   "zip_over_uncompressed": 0.9597,
+   "wv3_estimated_range_read_bytes": 4174343788
+  },
+  "STARCOP_train_remaining_part1": {
+   "zenodo": {
+    "tiles": 574,
+    "tiles_with_all_8": 574,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 574,
+     "TOA_WV3_SWIR2.tif": 574,
+     "TOA_WV3_SWIR3.tif": 574,
+     "TOA_WV3_SWIR4.tif": 574,
+     "TOA_WV3_SWIR5.tif": 574,
+     "TOA_WV3_SWIR6.tif": 574,
+     "TOA_WV3_SWIR7.tif": 574,
+     "TOA_WV3_SWIR8.tif": 574
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 553704668,
+     "TOA_WV3_SWIR2.tif": 557142338,
+     "TOA_WV3_SWIR3.tif": 556199069,
+     "TOA_WV3_SWIR4.tif": 555171556,
+     "TOA_WV3_SWIR5.tif": 559182189,
+     "TOA_WV3_SWIR6.tif": 558176447,
+     "TOA_WV3_SWIR7.tif": 559445058,
+     "TOA_WV3_SWIR8.tif": 562713441
+    },
+    "total_files": 4592,
+    "total_bytes": 4461734766
+   },
+   "mirror": {
+    "tiles": 574,
+    "tiles_with_all_8": 574,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 574,
+     "TOA_WV3_SWIR2.tif": 574,
+     "TOA_WV3_SWIR3.tif": 574,
+     "TOA_WV3_SWIR4.tif": 574,
+     "TOA_WV3_SWIR5.tif": 574,
+     "TOA_WV3_SWIR6.tif": 574,
+     "TOA_WV3_SWIR7.tif": 574,
+     "TOA_WV3_SWIR8.tif": 574
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 553704668,
+     "TOA_WV3_SWIR2.tif": 557142338,
+     "TOA_WV3_SWIR3.tif": 556199069,
+     "TOA_WV3_SWIR4.tif": 555171556,
+     "TOA_WV3_SWIR5.tif": 559182189,
+     "TOA_WV3_SWIR6.tif": 558176447,
+     "TOA_WV3_SWIR7.tif": 559445058,
+     "TOA_WV3_SWIR8.tif": 562713441
+    },
+    "total_files": 4592,
+    "total_bytes": 4461734766
+   },
+   "on_mirror": true,
+   "tiles_only_in_zenodo": 0,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 9240740614,
+   "uncompressed_member_bytes": 9613961742,
+   "zip_over_uncompressed": 0.9612,
+   "wv3_estimated_range_read_bytes": 4288526912
+  },
+  "STARCOP_train_remaining_part2": {
+   "zenodo": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 539653401,
+     "TOA_WV3_SWIR2.tif": 543159182,
+     "TOA_WV3_SWIR3.tif": 542168386,
+     "TOA_WV3_SWIR4.tif": 541330035,
+     "TOA_WV3_SWIR5.tif": 545463671,
+     "TOA_WV3_SWIR6.tif": 544461039,
+     "TOA_WV3_SWIR7.tif": 545725267,
+     "TOA_WV3_SWIR8.tif": 548556260
+    },
+    "total_files": 4584,
+    "total_bytes": 4350517241
+   },
+   "mirror": null,
+   "on_mirror": false,
+   "tiles_only_in_zenodo": 573,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 9011870388,
+   "uncompressed_member_bytes": 9374714032,
+   "zip_over_uncompressed": 0.9613,
+   "wv3_estimated_range_read_bytes": 4182132635
+  },
+  "STARCOP_train_remaining_part3": {
+   "zenodo": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 560516128,
+     "TOA_WV3_SWIR2.tif": 564379147,
+     "TOA_WV3_SWIR3.tif": 563197366,
+     "TOA_WV3_SWIR4.tif": 562639165,
+     "TOA_WV3_SWIR5.tif": 566902168,
+     "TOA_WV3_SWIR6.tif": 565794827,
+     "TOA_WV3_SWIR7.tif": 567115962,
+     "TOA_WV3_SWIR8.tif": 569654102
+    },
+    "total_files": 4584,
+    "total_bytes": 4520198865
+   },
+   "mirror": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 560516128,
+     "TOA_WV3_SWIR2.tif": 564379147,
+     "TOA_WV3_SWIR3.tif": 563197366,
+     "TOA_WV3_SWIR4.tif": 562639165,
+     "TOA_WV3_SWIR5.tif": 566902168,
+     "TOA_WV3_SWIR6.tif": 565794827,
+     "TOA_WV3_SWIR7.tif": 567115962,
+     "TOA_WV3_SWIR8.tif": 569654102
+    },
+    "total_files": 4584,
+    "total_bytes": 4520198865
+   },
+   "on_mirror": true,
+   "tiles_only_in_zenodo": 0,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 9333864104,
+   "uncompressed_member_bytes": 9709653454,
+   "zip_over_uncompressed": 0.9613,
+   "wv3_estimated_range_read_bytes": 4345255176
+  },
+  "STARCOP_train_remaining_part4": {
+   "zenodo": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 550322430,
+     "TOA_WV3_SWIR2.tif": 553836639,
+     "TOA_WV3_SWIR3.tif": 552772706,
+     "TOA_WV3_SWIR4.tif": 552120019,
+     "TOA_WV3_SWIR5.tif": 556325967,
+     "TOA_WV3_SWIR6.tif": 555184878,
+     "TOA_WV3_SWIR7.tif": 556606112,
+     "TOA_WV3_SWIR8.tif": 559276081
+    },
+    "total_files": 4584,
+    "total_bytes": 4436444832
+   },
+   "mirror": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 550322430,
+     "TOA_WV3_SWIR2.tif": 553836639,
+     "TOA_WV3_SWIR3.tif": 552772706,
+     "TOA_WV3_SWIR4.tif": 552120019,
+     "TOA_WV3_SWIR5.tif": 556325967,
+     "TOA_WV3_SWIR6.tif": 555184878,
+     "TOA_WV3_SWIR7.tif": 556606112,
+     "TOA_WV3_SWIR8.tif": 559276081
+    },
+    "total_files": 4584,
+    "total_bytes": 4436444832
+   },
+   "on_mirror": true,
+   "tiles_only_in_zenodo": 0,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 9188310245,
+   "uncompressed_member_bytes": 9557473054,
+   "zip_over_uncompressed": 0.9614,
+   "wv3_estimated_range_read_bytes": 4265084638
+  },
+  "STARCOP_train_remaining_part5": {
+   "zenodo": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 565006268,
+     "TOA_WV3_SWIR2.tif": 567575199,
+     "TOA_WV3_SWIR3.tif": 566430287,
+     "TOA_WV3_SWIR4.tif": 565859494,
+     "TOA_WV3_SWIR5.tif": 569726913,
+     "TOA_WV3_SWIR6.tif": 568565020,
+     "TOA_WV3_SWIR7.tif": 570019051,
+     "TOA_WV3_SWIR8.tif": 572409713
+    },
+    "total_files": 4584,
+    "total_bytes": 4545591945
+   },
+   "mirror": {
+    "tiles": 573,
+    "tiles_with_all_8": 573,
+    "tiles_lacking": 0,
+    "lacking_examples": [],
+    "files": {
+     "TOA_WV3_SWIR1.tif": 573,
+     "TOA_WV3_SWIR2.tif": 573,
+     "TOA_WV3_SWIR3.tif": 573,
+     "TOA_WV3_SWIR4.tif": 573,
+     "TOA_WV3_SWIR5.tif": 573,
+     "TOA_WV3_SWIR6.tif": 573,
+     "TOA_WV3_SWIR7.tif": 573,
+     "TOA_WV3_SWIR8.tif": 573
+    },
+    "bytes": {
+     "TOA_WV3_SWIR1.tif": 565006268,
+     "TOA_WV3_SWIR2.tif": 567575199,
+     "TOA_WV3_SWIR3.tif": 566430287,
+     "TOA_WV3_SWIR4.tif": 565859494,
+     "TOA_WV3_SWIR5.tif": 569726913,
+     "TOA_WV3_SWIR6.tif": 568565020,
+     "TOA_WV3_SWIR7.tif": 570019051,
+     "TOA_WV3_SWIR8.tif": 572409713
+    },
+    "total_files": 4584,
+    "total_bytes": 4545591945
+   },
+   "on_mirror": true,
+   "tiles_only_in_zenodo": 0,
+   "tiles_only_on_mirror": 0,
+   "wv3_size_mismatches_mirror_vs_zenodo": 0,
+   "mismatch_examples": [],
+   "zip_bytes": 9417306040,
+   "uncompressed_member_bytes": 9797060668,
+   "zip_over_uncompressed": 0.9612,
+   "wv3_estimated_range_read_bytes": 4369395264
+  }
+ },
+ "coverage": {
+  "train_csv_tiles": 3425,
+  "train_ids_unique": 3425,
+  "train_ids_in_no_train_archive": 0,
+  "train_ids_in_more_than_one_archive": 0,
+  "train_tiles_by_archive": {
+   "STARCOP_train_easy": 559,
+   "STARCOP_train_remaining_part1": 574,
+   "STARCOP_train_remaining_part2": 573,
+   "STARCOP_train_remaining_part3": 573,
+   "STARCOP_train_remaining_part4": 573,
+   "STARCOP_train_remaining_part5": 573
+  },
+  "archive_tiles_not_in_train_csv": {
+   "STARCOP_train_easy": 0,
+   "STARCOP_train_remaining_part1": 0,
+   "STARCOP_train_remaining_part2": 0,
+   "STARCOP_train_remaining_part3": 0,
+   "STARCOP_train_remaining_part4": 0,
+   "STARCOP_train_remaining_part5": 0
+  },
+  "train_tiles_on_mirror": 2852,
+  "train_tiles_not_on_mirror": 573,
+  "train_tiles_not_on_mirror_by_archive": {
+   "STARCOP_train_remaining_part2": 573
+  },
+  "train_tiles_lacking_a_wv3_band_in_zenodo": 0,
+  "test_csv_tiles": 342,
+  "test_tiles_lacking_a_wv3_band_in_zenodo": 0,
+  "test_tiles_on_mirror": 342,
+  "tiles_train_plus_test": 3767,
+  "mirror_tiles_train_plus_test": 3194,
+  "wv3_bytes_train": 26664123245,
+  "wv3_bytes_test": 2713682443,
+  "wv3_bytes_train_not_on_mirror": 4350517241,
+  "wv3_bytes_train_not_on_mirror_zip_estimate": 4182132635
+ },
+ "cache_sizes_fp16": {
+  "C3": {
+   "channels": 3,
+   "bytes_per_tile": 1572864,
+   "train_bytes": 5387059200,
+   "train_GB": 5.39
+  },
+  "C6": {
+   "channels": 6,
+   "bytes_per_tile": 3145728,
+   "train_bytes": 10774118400,
+   "train_GB": 10.77
+  },
+  "C8": {
+   "channels": 8,
+   "bytes_per_tile": 4194304,
+   "train_bytes": 14365491200,
+   "train_GB": 14.37
+  },
+  "C11": {
+   "channels": 11,
+   "bytes_per_tile": 5767168,
+   "train_bytes": 19752550400,
+   "train_GB": 19.75
+  },
+  "labels_uint8": {
+   "train_bytes": 897843200,
+   "train_GB": 0.9
+  }
+ },
+ "build_estimate": {
+  "aviris_run": {
+   "secs": 1757.2,
+   "zenodo_bytes": 1946554152,
+   "zenodo_files": 3438,
+   "mirror_bytes": 9982657921,
+   "mirror_files": 17112,
+   "http429": 275,
+   "tiles": 3425
+  },
+  "zenodo_rate_B_per_s": 1107759,
+  "wv3_zenodo_bytes": 4182132635,
+  "wv3_zenodo_files": 4584,
+  "wv3_zenodo_seconds": 3775,
+  "wv3_mirror_bytes": 22313606004,
+  "wv3_mirror_files": 22816
+ }
+}

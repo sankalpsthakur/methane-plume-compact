@@ -43,6 +43,7 @@ The protocol is the paper-text one: strong and weak plumes are split by emission
 - **Control:** the control row carries no claim. Trained with this pipeline at this budget, the released architecture reaches the same weak F1 as the small model (54.42 against 54.47). That suggests the gain over the released runs comes from the training pipeline rather than from the small architecture, but it rests on one control run.
 - **Two runs:** the same architecture was evaluated on the same test split twice. The GPU run was planned, with the same target and rule, before the CPU run's test evaluation, and it changed only the training budget.
 - **No third look:** a third, validation-gated wave (Amendment 6, 15 epochs) failed its gate: its validation composite was 2.0 points below the 10-epoch run, where the gate needed +2.0. The test split was not read a third time (`results/gpu_runs/gpu-gate3/gate_decision.json`).
+- **Simulated WorldView-3 split, no claim:** a fourth wave on STARCOP's simulated WorldView-3 split (three channels, the same 342 test tiles) was gated on reproducing the published row first. The paper-recipe control reached a test AUPRC of 9.43 against the published 13.04 ± 1.96 (gate band 11.08 to 15.00), so the gate failed, nothing of ours was scored on that split and no claim is made (`protocol/PREREGISTRATION.md` Amendments 7 to 7b, `protocol/wv3_gate.json`, `TEST-LOG.md` rows 43 to 48).
 
 ## Protocol
 
@@ -130,6 +131,7 @@ Training is not bit-reproducible across hardware.
 | `tests/` | tests of the tooling |
 | `data_meta/`, `manifests/` | STARCOP metadata and Zenodo file lists (CC BY-NC 4.0, see `NOTICE`) |
 | `FEASIBILITY.md` | the data route: Zenodo, the Kaggle mirror and its missing archive |
+| `appendix/operating_budget/` | an audit of the three released references (two STARCOP checkpoints and raw mag1c) under operating gates, recomputed with a numpy script; it does not score methane-plume-compact; its two tables are CC BY-NC 4.0 in their own folder |
 
 ## What differs from the private working repository
 

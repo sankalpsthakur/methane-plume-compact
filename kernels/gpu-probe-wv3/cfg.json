@@ -1,0 +1,11 @@
+{
+ "machine_shape": "NvidiaTeslaT4",
+ "max_gpus": 2,
+ "billing_b": 2,
+ "billed_cap_s": 600,
+ "wall_cap_s": 300,
+ "imagenet": {
+  "url": "https://download.pytorch.org/models/mobilenet_v2-b0353104.pth",
+  "sha256_prefix": "b0353104"
+ }
+}

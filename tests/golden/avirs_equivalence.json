@@ -1,0 +1,39 @@
+{
+ "recorded": {
+  "torch": "2.13.0",
+  "os": "darwin",
+  "machine": "arm64",
+  "numpy": "2.4.2"
+ },
+ "src_sha256_16": "54170b5e7b1e2859",
+ "sampler": {
+  "hardneg0": "be9504363936926762826d605d24a2bc199db1604ca9075c2338e79c107e42a8",
+  "hardneg05": "54a6d583b2d76295fb8855545237aacd846fc5eaf67f261b6db9cd3745ed5f2b"
+ },
+ "models": {
+  "edge_d1": {
+   "init_state_sha256": "449a5343916af1a015e9516f1be8ffb922e39d71e1a5c30755644cfc93f63eb9",
+   "forward_sha256": "30a1d151534b092d9308d5492c51a2a755ea4d0f22419959b49007b96a20ed04"
+  },
+  "mnv2": {
+   "init_state_sha256": "8489c53742f8b13db89526cc95b74a7728dbf38b6ac9e79515fc596d46c20740",
+   "forward_sha256": "615de76b6e96a2fea6fc259e0d63c9b5b0db6ffd7ad04c51fde9cbbe91063b77"
+  }
+ },
+ "train": {
+  "train_edge": {
+   "state_sha256": "cdf72f5cc3f0409b5a32a756602061032a3ccd21b5888abc7e7179dcbec5fe1e"
+  },
+  "train_mnv2": {
+   "state_sha256": "09345b2f6008e708ba7c09463363dd49967e5651be6b36ffce045adbdd2407f1"
+  },
+  "train_edge_val": {
+   "state_sha256": "7f175dbccb378165d709f8abd95592713dbb691a6ddd68d933275ad9dacc358d",
+   "val_metrics_sha256": "092abedfa97c874eb3f14b1172d7be5d01498334749f27b22b27fe88426d53a7"
+  },
+  "train_mnv2_plateau": {
+   "state_sha256": "f86c96fca60618c878e3ce1b859bd64e41a6114b1549df20e93382060397c542",
+   "val_metrics_sha256": "42d442e77a64929f32a54865d24bb3c80c06df16fd9d547d3cbac2786c68a14f"
+  }
+ }
+}
